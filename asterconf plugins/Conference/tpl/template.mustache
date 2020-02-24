@@ -1,0 +1,132 @@
+<script id="clientTpl" type="text/html">
+
+		{{^error}}
+		<div class="aconf--viewdiv relativ p5">
+
+			<div class="aconf--close fs-14"><i class="icon-cancel-circled"></i></div>
+
+			<div class="box--child aconf--icounts mb10">
+
+				{{#data}}
+
+					<div class="aconf--itemcounts">
+
+						<div class="gray2 p5 fs-12 Bold aconf--1subcounts">{{name}}</div>
+						<div class="p5 fs-14 aconf--1subcounts">{{{value}}}</div>
+
+					</div>
+
+				{{/data}}
+
+			</div>
+
+			<div class="flex-container p10 bgwhite mb5 relativ aconf--item" data-pid="{{pid}}" data-clid="{{clid}}" data-did="{{did}}">
+
+				<div class="flex-string wp100 Bold fs-14 flh-11">{{#ticket}}<span class="blue">#{{ticket}}</span>{{/ticket}} {{person}}</div>
+				<div class="flex-string wp100 fs-10 gray2 mt10">{{client}}</div>
+
+				{{^registered}}
+					{{#allowed}}
+						<div class="aconf--regit" title="Зарегистрировать"><i class="icon-ok"></i></div>
+					{{/allowed}}
+					{{^allowed}}
+						<div class="aconf--regit aconf--noregit" title="Не оплачено"><i class="icon-dollar"></i></div>
+					{{/allowed}}
+				{{/registered}}
+				{{#registered}}
+					<div class="aconf--regit aconf--regited" title="Уже зарегистрирован"><i class="icon-ok"></i></div>
+				{{/registered}}
+
+			</div>
+
+			{{#did}}
+
+				<div class="flex-container infodiv mt5 fs-12 flh-14 block border-bottom Bold ha hand" onclick="openDogovor('{{did}}','7')">
+
+					<div class="flex-string wp100 p5 border-box blue"><i class="icon-briefcase-1 broun"></i>{{deal}}</div>
+
+				</div>
+
+			{{/did}}
+
+			{{#speca}}
+
+				<div class="flex-container infodiv mt5 fs-12 flh-14 block border-bottom Bold ha">
+
+					<div class="flex-string wp90 p5 border-box">{{name}}</div>
+					<div class="flex-string wp10 p5 border-box blue">{{{value}}}</div>
+
+				</div>
+
+			{{/speca}}
+
+		</div>
+		{{/error}}
+
+		{{#error}}
+		<div class="warning div-center">{{error}}</div>
+		{{/error}}
+
+</script>
+
+<script id="totalTpl" type="text/html">
+
+		{{resetIndex}}
+		{{#list}}
+
+		<div class="flex-container">
+
+			<div class="flex-string wp30 hidden-iphone"></div>
+			<div class="flex-string wp40">
+
+				<div class="flex-container {{#add}}astring{{/add}}{{^add}}astringview greenbg-sub hand{{/add}} box--child fs-12 mb10 pt5 pb5" data-did="{{did}}" data-clid="{{clid}}" data-pid="{{pid}}" data-add="{{add}}">
+
+					<div class="flex-string p5 wp10 pl5">{{index}}</div>
+					<div class="flex-string p5 wp80">
+
+						<div class="Bold person">{{&iperson}}</div>
+						<div class="fs-09 gray pt5">{{client}}</div>
+						<div class="fs-09 gray pt5">{{deal}}</div>
+						<div class="fs-09 blue mt10">Зарегистрирован: {{{time}}} назад</div>
+
+					</div>
+					<div class="flex-string p5 wp10">{{&icon}}</div>
+
+				</div>
+
+			</div>
+			<div class="flex-string wp30 hidden-iphone"></div>
+
+		</div>
+
+		{{/list}}
+
+</script>
+
+<script id="personsTpl" type="text/html">
+
+		{{#list}}
+
+		<div class="flex-container p10 bgwhite mb5 relativ aconf--item" data-pid="{{pid}}" data-clid="{{clid}}" data-did="{{did}}">
+
+			<div class="flex-string wp100 Bold fs-14 flh-11">{{#ticket}}<span class="blue">#{{ticket}}</span>{{/ticket}} {{person}}</div>
+			<div class="flex-string wp100 fs-10 gray2 mt10">{{client}}</div>
+
+			<div class="aconf--info"><i class="icon-info-1"></i></div>
+			{{^registered}}
+				{{#allowed}}
+					<div class="aconf--regit" title="Зарегистрировать"><i class="icon-ok"></i></div>
+				{{/allowed}}
+				{{^allowed}}
+					<div class="aconf--regit aconf--noregit" title="Не оплачено"><i class="icon-dollar"></i></div>
+				{{/allowed}}
+			{{/registered}}
+			{{#registered}}
+				<div class="aconf--regit aconf--regited" title="Уже зарегистрирован"><i class="icon-ok"></i></div>
+			{{/registered}}
+
+		</div>
+
+		{{/list}}
+
+</script>

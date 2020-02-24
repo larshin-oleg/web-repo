@@ -1,0 +1,813 @@
+<?php
+/* ============================ */
+/* (C) 2016 Vladislav Andreev   */
+/*      SalesMan Project        */
+/*        www.isaler.ru         */
+/*          ver. 2019.2         */
+/* ============================ */
+
+set_time_limit(300);
+
+header("Access-Control-Allow-Origin: *");
+header('Content-Type: text/html; charset=utf-8');
+
+error_reporting(E_ERROR);
+
+$rootpath = realpath(__DIR__.'/../../../');
+
+require_once $rootpath."/inc/config.php";
+require_once $rootpath."/inc/dbconnector.php";
+require_once $rootpath."/inc/settings.php";
+require_once $rootpath."/inc/func.php";
+
+include_once $rootpath."/inc/class/Client.php";
+include_once $rootpath."/inc/class/Deal.php";
+include_once $rootpath."/inc/class/Person.php";
+
+//первоначальные настройки
+$config = [
+	//этап, на который надо перевести сделку
+	"step"      => 7,
+	//отправлять welcome по смс
+	"sendsms"   => false,
+	//текст смс
+	"text"      => "Добро пожаловать на конференцию AsterConf. Voxlink",
+	//артикулы участия онлайн
+	"online"    => 7,
+	//типы сделок
+	"tips"      => 8,
+	//направление
+	"direction" => 3
+];
+
+$config = json_decode(file_get_contents("../data/settings.json"), true);
+
+function getPersonPhone($id) {
+
+	$rootpath = realpath(__DIR__.'/../../../');
+
+	include_once $rootpath."/inc/config.php";
+	include_once $rootpath."/inc/dbconnector.php";
+	include_once $rootpath."/inc/func.php";
+
+	$sqlname  = $GLOBALS['sqlname'];
+	$identity = $GLOBALS['identity'];
+	$db       = $GLOBALS['db'];
+
+	$str = '';
+
+	if ($id) {
+
+		$resultp = $db -> getRow("SELECT tel, mob FROM {$sqlname}personcat WHERE pid='$id' and identity = '$identity'");
+		$tel     = $resultp["tel"];
+		$mob     = $resultp["mob"];
+
+		$tel = yexplode(",", str_replace(";", ",", $tel));
+		$mob = yexplode(",", str_replace(";", ",", $mob));
+
+		$phone = array_merge($tel, $mob);
+
+		foreach ($phone as $tel) {
+
+			if (is_mobile($tel)) {
+				$str = prepareMobPhone($tel);
+				goto e;
+			}
+
+		}
+
+	}
+
+	e:
+
+	return $str;
+
+}
+
+$action = $_REQUEST['action'];
+
+$mes = [];
+
+// если таблицы нет, то создаем её
+$da = $db -> getOne("SELECT COUNT(*) as count FROM INFORMATION_SCHEMA.STATISTICS WHERE table_schema = '$database' and TABLE_NAME = 'conference'");
+if ($da == 0) {
+
+	try {
+
+		$db -> query("
+			CREATE TABLE `conference` (
+				`id` INT(10) NOT NULL AUTO_INCREMENT,
+				`conf` INT(20) NULL DEFAULT '0',
+				`datum` DATETIME NOT NULL COMMENT 'время регистрации',
+				`pid` INT(10) NULL DEFAULT '0' COMMENT 'id контакта',
+				`clid` INT(10) NULL DEFAULT '0' COMMENT 'id клиента',
+				`did` INT(10) NULL DEFAULT '0' COMMENT 'id сделки',
+				PRIMARY KEY (`id`)
+			)
+			COMMENT='Конференция'
+			ENGINE=InnoDB
+		");
+
+	}
+	catch (Exception $e) {
+
+		$mes[] = 'Ошибка'.$e -> getMessage().' в строке '.$e -> getCode();
+
+	}
+
+}
+
+// если таблицы нет, то создаем её
+$da = $db -> getOne("SELECT COUNT(*) as count FROM INFORMATION_SCHEMA.STATISTICS WHERE table_schema = '$database' and TABLE_NAME = 'conference_tickets'");
+if ($da == 0) {
+
+	try {
+
+		$db -> query("
+			CREATE TABLE `conference_tickets` (
+				`id` INT(11) NOT NULL AUTO_INCREMENT,
+				`conf` INT(20) NULL DEFAULT '0',
+				`pid` INT(11) NOT NULL COMMENT 'ID контакта',
+				`ticket` VARCHAR(10) NOT NULL COMMENT '№ билета',
+				`deid` INT(11) NOT NULL COMMENT 'ID документа',
+				PRIMARY KEY (`id`),
+				INDEX `pid_ticket` (`pid`, `ticket`)
+			)
+			COMMENT='Сопоставление id клиента = id билета'
+			COLLATE='utf8_general_ci'
+			ENGINE=InnoDB
+		");
+
+	}
+	catch (Exception $e) {
+
+		$mes[] = 'Ошибка'.$e -> getMessage().' в строке '.$e -> getCode();
+
+	}
+
+}
+
+// добавим доп.поле для идентификации конференций
+$field = $db -> getRow("SHOW COLUMNS FROM conference LIKE 'conf'");
+if ($field['Field'] == '')
+	$db -> query("ALTER TABLE conference ADD COLUMN `conf` INT(20) NULL DEFAULT '0' AFTER `id`");
+
+// добавим доп.поле для идентификации конференций
+$field = $db -> getRow("SHOW COLUMNS FROM conference_tickets LIKE 'conf'");
+if ($field['Field'] == '')
+	$db -> query("ALTER TABLE conference_tickets ADD COLUMN `conf` INT(20) NULL DEFAULT '0' AFTER `id`");
+
+/**
+ * Результаты поиска
+ */
+if ($action == 'get.client') {
+
+	$q = texttosmall(trim($_REQUEST["word"]));
+
+	$words = yexplode(" ", trim($q));
+	$psort = $sort = '';
+	$so    = $w = $list = [];
+
+	foreach ($words as $k => $v)
+		if (mb_strlen(trim($v), 'utf-8') > 2)
+			$w[] = $v;
+	$words = $w;
+
+	if (count($words) > 1) {
+
+		$regexp = [];
+
+		foreach ($words AS $worda)
+			if ($worda != ' ')
+				$regexp[] = '('.$worda.')+';
+
+		$so[] = "LOWER(person) REGEXP '".implode("(.*)?", $regexp)."'";
+
+		asort($words);
+
+		foreach ($words AS $worda)
+			if ($worda != ' ')
+				$regexp[] = '('.$worda.')+';
+
+		$so[] = "LOWER(person) REGEXP '".implode("(.*)?", $regexp)."'";
+
+		$regexp = [];
+
+		if (count($words) > 1) {
+
+			rsort($words);
+
+			foreach ($words AS $worda)
+				if ($worda != ' ')
+					$regexp[] = '('.$worda.')+';
+
+		}
+
+		$so[] = "LOWER(person) REGEXP '".implode("(.*)?", $regexp)."'";
+
+	}
+	elseif ($words[0] != '') $so[] = "person LIKE '%".$words[0]."%'";
+
+	$psort = (!empty($so)) ? yimplode(" or ", $so)." or " : "";
+
+	if (is_numeric($q) && strlen($q) >= 6)
+		$sort .= "
+			replace(replace(replace(replace(replace(tel, '+', ''), '(', ''), ')', ''), ' ', ''), '-', '') LIKE '%".substr(prepareMobPhone($q), 1)."%' or 
+			replace(replace(replace(replace(replace(mob, '+', ''), '(', ''), ')', ''), ' ', ''), '-', '') LIKE '%".substr(prepareMobPhone($q), 1)."%' or 
+		";
+
+	//добавим поиск по номеру Билета. Старая реализация
+	/*
+	if (is_numeric($q) && strlen($q) < 5)
+		$sort .= "clid IN (SELECT clid FROM {$sqlname}contract WHERE number = '$q' and ftitle LIKE 'Билет%' and identity = '$identity') or ";
+	*/
+
+	//добавим поиск по номеру Билета. Новая реализация
+	if (is_numeric($q) && strlen($q) < 7)
+		$sort .= "pid = (SELECT pid FROM conference_tickets WHERE ticket = '$q') or ";
+
+	//print
+	$query = "
+		SELECT 
+			person, pid, clid, iduser 
+		FROM {$sqlname}personcat 
+		WHERE 
+			(
+				$psort
+				clid IN (SELECT clid FROM {$sqlname}clientcat WHERE title LIKE '%$q%' and identity = '$identity') or 
+				$sort
+				mail LIKE '%$q%'
+			) and 
+			identity = '$identity'
+		ORDER BY person
+	";
+
+	$result = $db -> query($query);
+	while ($data = $db -> fetch($result)) {
+
+		$q   = "
+			SELECT
+				did
+			FROM {$sqlname}dogovor
+			WHERE
+				FIND_IN_SET('$data[pid]', REPLACE(pid_list, ';',',')) > 0 and
+				close != 'yes' and
+				tip IN (".yimplode(",", $config['tips']).") and
+				direction IN (".yimplode(",", $config['direction']).") and 
+				identity = '$identity'
+			ORDER BY datum DESC LIMIT 1
+		";
+		$did = $db -> getOne($q) + 0;
+
+		//количество зарегистрированных
+		$count = $db -> getOne("SELECT COUNT(*) FROM conference WHERE conf IN (".yimplode(",", $config['direction']).") and pid = '$data[pid]'") + 0;
+
+		if ($did > 0 /*&& $count == 0*/) {
+
+			//данные счета
+			$deal = Salesman\Deal ::info($did);
+
+			//$count  = $db -> getOne("SELECT COUNT(*) as count FROM conference WHERE conf IN (".yimplode(",", $config['direction']).") and did = '$did'") + 0;
+			$counts = count($deal['person']);
+
+			$invoices = $deal['invoice'];
+			$isumma   = 0;
+
+			foreach ($invoices as $invoice)
+				if ($invoice['do'] == 'on')
+					$isumma += $invoice['summa'];
+
+			//процент оплаты
+			$percent = round($isumma / $deal['summa'] * 100);
+
+			//сколько мы уже зарегали от конторы
+			$totalcount = $db -> getOne("SELECT COUNT(*) as count FROM conference WHERE conf IN (".yimplode(",", $config['direction']).") and clid = '$data[clid]' and did = '$did'") + 0;
+
+			//найдем билет
+			$ticket = $db -> getOne("SELECT ticket FROM conference_tickets WHERE pid = '$data[pid]' and conf = '$config[direction]'");
+
+			$list[] = [
+				"person"     => $data['person'],
+				"pid"        => $data['pid'],
+				"clid"       => $data['clid'],
+				"client"     => current_client($data['clid']),
+				"user"       => current_user($data['iduser']),
+				"did"        => $did,
+				"allowed"    => ($percent > 0) ? 1 : null,
+				"registered" => ($count > 0) ? 1 : null,
+				"ticket"     => $ticket
+			];
+
+		}
+
+	}
+
+	function cmp($a, $b) { return $b['registered'] < $a['registered']; }
+
+	usort($list, 'cmp');
+
+	print json_encode_cyr([
+		"list"  => $list,
+		"count" => count($list)
+	]);
+
+	exit();
+
+}
+
+/**
+ * Загрузка информации по посетителю
+ */
+if ($action == 'get.deal') {
+
+	$pid  = $_REQUEST['pid'];
+	$clid = $_REQUEST['clid'];
+	$did  = (int)$_REQUEST['did'];
+
+	$deal  = $data = $speca = [];
+	$error = $approve = '';
+
+	$person = current_person($pid);
+
+	//todo: доработать поиск контакта в спеке + обработку без указания сделки
+
+	if ($did > 0) {
+
+		$query = "
+			SELECT
+				did
+			FROM {$sqlname}dogovor
+			WHERE
+				(FIND_IN_SET('$pid', REPLACE(pid_list, ';',',')) > 0 AND did = '$did') and
+				clid = '$clid' and
+				tip = '$config[tips]' and
+				direction = '$config[direction]' and 
+				close != 'yes' and
+				identity = '$identity'
+				ORDER BY datum DESC LIMIT 1
+		";
+		$did   = $db -> getOne($query);
+
+	}
+	else {
+
+		$query = "
+			SELECT
+				did
+			FROM {$sqlname}dogovor
+			WHERE
+				(FIND_IN_SET('$pid', REPLACE(pid_list, ';',',')) > 0) and
+				clid = '$clid' and
+				tip = '$config[tips]' and
+				direction = '$config[direction]' and 
+				close != 'yes' and
+				identity = '$identity'
+				ORDER BY datum DESC LIMIT 1
+		";
+		$did   = $db -> getOne($query);
+
+	}
+
+	if ($did > 0) {
+
+		$deal = \Salesman\Deal ::info($did);
+
+		//print_r($deal);
+
+		$count      = $db -> getOne("SELECT COUNT(*) as count FROM conference WHERE conf IN (".yimplode(",", $config['direction']).") and pid = '$pid'") + 0;
+		$totalcount = $db -> getOne("SELECT COUNT(*) as count FROM conference WHERE conf IN (".yimplode(",", $config['direction']).") and did = '$did'") + 0;
+		$counts     = count($deal['person']);
+
+		$invoices = $deal['invoice'];
+		$isumma   = 0;
+
+		//найдем билет
+		$ticket = $db -> getOne("SELECT ticket FROM conference_tickets WHERE pid = '$pid' and conf = '$config[direction]'");
+
+		foreach ($invoices as $invoice)
+			if ($invoice['do'] == 'on')
+				$isumma += $invoice['summa'];
+
+		//$isumma = arraysum($invoices, 'summa', true);
+
+		$percent = ($deal['summa'] > 0) ? round($isumma / $deal['summa'] * 100) : 0;
+
+		$data = [
+			[
+				"name"  => "Оплачено",
+				"value" => '<div class="fs-12 Bold">'.$percent.'%</div><div class="gray fs-07 mt10"><b>'.num_format($isumma).'</b> из '.num_format($deal['summa']).' '.$valuta.'</div>'
+			],
+			[
+				"name"  => "Зарегистрировано",
+				"value" => '<b class="blue">'.$totalcount.'</b> / <b>'.$counts.'</b> чел.'
+			],
+			[
+				"name"  => "Клиент",
+				"value" => '<div class="Bold blue flh-09">'.$deal['client']['title'].'</div>'
+			],
+		];
+
+		$deal['speca'] = [];
+		$ress = $db -> getAll("SELECT * FROM ".$sqlname."speca WHERE did = '$did' and identity = '$identity' ORDER BY spid");
+		foreach ($ress as $da) {
+
+			$deal['speca'][] = [
+				"prid"     => $da['prid'],
+				"artikul"  => $da['artikul'],
+				"title"    => $da['title'],
+				"kol"      => $da['kol'],
+				"dop"      => $da['dop'],
+				"edizm"    => $da['edizm'],
+				"price"    => $da['price'],
+				"price_in" => $da['price_in'],
+				"nds"      => $da['nds'],
+				"comment"  => $da['comments']
+			];
+		}
+
+		//проходим позиции спецификации с поиском ФИО контакта
+		foreach ($deal['speca'] as $item) {
+
+			if (stripos($item['title'], $person) !== false || stripos($item['comment'], $person) !== false)
+				$speca[] = [
+					"name"  => $item['title'],
+					"value" => (int)$item['kol']." ".$item['edizm'],
+				];
+
+		}
+
+		//если ничего не найдено, то выводим полную спеку
+		if (empty($speca) && count($deal['person']) == 1)
+			foreach ($deal['speca'] as $item)
+				$speca[] = [
+					"name"  => $item['title'],
+					"value" => (int)$item['kol']
+				];
+
+		if ($count == 0)
+			$approve = 1;
+		elseif ($count == $counts)
+			$approve = 0;
+
+	}
+	else $error = 'Сделка не найдена';
+
+	print json_encode_cyr([
+		"did"        => $did,
+		"deal"       => current_dogovor($did),
+		"data"       => $data,
+		"speca"      => $speca,
+		"error"      => $error,
+		"approve"    => $approve,
+		"pid"        => $pid,
+		"person"     => current_person($pid),
+		"clid"       => $clid,
+		"client"     => current_client($clid),
+		"ticket"     => $ticket,
+		"allowed"    => ($percent > 0) ? 1 : null,
+		"registered" => ($count > 0) ? 1 : null,
+	]);
+
+	exit();
+
+}
+
+/**
+ * Количество посетителей Ожидается / Зарегистрировано
+ */
+if ($action == 'get.count') {
+
+	$counts = 0;
+
+	$r = $db -> query("
+		SELECT 
+		did, pid_list 
+		FROM {$sqlname}dogovor 
+		WHERE 
+			close != 'yes' and 
+			tip IN (".yimplode(",", $config['tips']).") and 
+			direction = '$config[direction]' and 
+			identity = '$identity'
+		");
+	while ($data = $db -> fetch($r)) {
+
+		$pids    = yexplode(";", $data['pid_list']);
+		$persons = count($pids);
+
+		$online = $db -> getOne("SELECT COUNT(*) FROM {$sqlname}speca WHERE did = '$data[did]' and tip = '$config[online]'") + 0;
+
+		foreach ($pids as $pid) {
+
+			$c = $db -> getOne("SELECT COUNT(*) AS count FROM conference WHERE conf = '$config[direction]' and pid = '$pid'") + 0;
+
+			if ($c == 0)
+				$counts++;
+
+		}
+
+	}
+
+	$exist = $db -> getOne("
+		SELECT 
+			COUNT(*) AS count 
+		FROM conference 
+		WHERE 
+			conf = '$config[direction]' and 
+			did IN (
+				SELECT did 
+				FROM {$sqlname}dogovor 
+				WHERE 
+					close != 'yes' and 
+					tip IN (".yimplode(",", $config['tips']).") and
+					direction = '$config[direction]'
+					and identity = '$identity'
+			) 
+		-- GROUP BY pid
+	") + 0;
+
+	print json_encode_cyr([
+		"count"  => $exist,
+		"counts" => $counts
+	]);
+
+	exit();
+
+}
+
+/**
+ * Список посетителей Ожидается / Зарегистрировано
+ */
+if ($action == 'get.list') {
+
+	$tip = $_REQUEST['tip'];
+
+	$list = [];
+	$head = '';
+
+	switch ($tip) {
+
+		case "reserved":
+
+			$i = 1;
+
+			$pidexists = [];
+
+			$query = "
+				SELECT
+					{$sqlname}dogovor.title as deal,
+					{$sqlname}dogovor.did as did,
+					{$sqlname}dogovor.pid_list as pid_list,
+					{$sqlname}clientcat.clid as clid,
+					{$sqlname}clientcat.title as client
+				FROM {$sqlname}dogovor
+				LEFT JOIN {$sqlname}clientcat ON {$sqlname}dogovor.clid = {$sqlname}clientcat.clid
+				WHERE
+					{$sqlname}dogovor.pid_list != '' and
+					{$sqlname}dogovor.tip IN (".yimplode(",", $config['tips']).") and
+					{$sqlname}dogovor.direction = '$config[direction]' and 
+					{$sqlname}dogovor.close != 'yes' and
+					{$sqlname}dogovor.identity = '$identity'
+				GROUP BY {$sqlname}dogovor.did
+				ORDER BY {$sqlname}clientcat.title DESC
+			";
+
+			$result = $db -> query($query);
+			while ($data = $db -> fetch($result)) {
+
+				$pids = array_unique(yexplode(";", $data['pid_list']));
+
+				foreach ($pids as $pid) {
+
+					$count = $db -> getOne("SELECT COUNT(*) FROM conference WHERE conf = '$config[direction]' and pid = '$pid'") + 0;
+
+					$online = $db -> getOne("SELECT COUNT(*) FROM {$sqlname}speca WHERE did = '$data[did]' and tip = '$config[online]'") + 0;
+
+					$icon = ($count > 0) ? '<i class="icon-ok green"></i>' : '<i class="icon-dot-3 gray"></i>';
+					$add  = ($count > 0 && $online == 0) ? '' : '1';
+
+					if (!in_array($pid, $pidexists) && $online == 0) $list[] = [
+						"number" => $i,
+						"pid"    => $pid,
+						"person" => current_person($pid),
+						"did"    => $data['did'],
+						"deal"   => $data['deal'],
+						"clid"   => $data['clid'],
+						"client" => $data['client'],
+						"icon"   => $icon,
+						"add"    => $add
+					];
+
+					$pidexists[] = $pid;
+					$i++;
+
+				}
+
+			}
+
+			$head = 'Ожидаемые гости';
+
+		break;
+		case "registered":
+
+			$i = 1;
+
+			$pidexists = [];
+
+			$query = "
+				SELECT
+					DISTINCT conference.pid,
+					conference.clid,
+					conference.did,
+					conference.datum,
+					{$sqlname}dogovor.title as deal,
+					{$sqlname}clientcat.title as client,
+					{$sqlname}personcat.person as person
+				FROM conference
+				LEFT JOIN {$sqlname}personcat ON conference.pid = {$sqlname}personcat.pid
+				LEFT JOIN {$sqlname}clientcat ON conference.clid = {$sqlname}clientcat.clid
+				LEFT JOIN {$sqlname}dogovor ON conference.did = {$sqlname}dogovor.did
+				WHERE
+					{$sqlname}dogovor.close != 'yes' and
+					{$sqlname}dogovor.tip IN (".yimplode(",", $config['tips']).") and
+					{$sqlname}dogovor.direction = '$config[direction]' and 
+					{$sqlname}dogovor.identity = '$identity'
+				ORDER BY conference.id DESC
+			";
+
+			$result = $db -> query($query);
+			while ($data = $db -> fetch($result)) {
+
+				$list[] = [
+					"number" => $i,
+					"pid"    => $data['pid'],
+					"person" => current_person($data['pid']),
+					"did"    => $data['did'],
+					"deal"   => $data['deal'],
+					"clid"   => $data['clid'],
+					"client" => $data['client'],
+					"time"   => diffDateTime2($data['datum'])
+				];
+
+				$i++;
+
+			}
+
+			$head = 'Зарегистрированные гости';
+
+		break;
+
+	}
+
+	function cmp($a, $b) { return $b['person'] < $a['person']; }
+
+	if ($tip != 'registered')
+		usort($list, 'cmp');
+
+	print json_encode_cyr([
+		"list"  => $list,
+		"head"  => $head,
+		"tip"   => $tip,
+		"count" => count($list)
+	]);
+
+}
+
+/**
+ * Регистрация
+ */
+if ($action == 'register') {
+
+	$clid = $_REQUEST['clid'];
+	$pid  = $_REQUEST['pid'];
+	$did  = $_REQUEST['did'];
+
+	//найдем id-этапа сделки
+	$newstep  = $config['step'];
+	$response = '';
+
+	$params = [
+		"step"        => $newstep,
+		"description" => "Посетитель ".current_person($pid)." зарегистрирован на конференции"
+	];
+
+	//изменим этап сделки
+	$deal   = new \Salesman\Deal();
+	$result = $deal -> changestep($did, $params);
+
+	//print_r($result);
+
+	//проверяем имеющуюся регистрацию
+	$c = $db -> getOne("SELECT COUNT(*) AS count FROM conference WHERE pid = '$pid' AND conf = '$config[direction]'") + 0;
+
+	if ($c == 0) {
+
+		//зарегистрируем посетителя
+		$db -> query("INSERT INTO conference SET ?u", [
+			"datum" => current_datumtime(),
+			"conf"  => $config['direction'],
+			"pid"   => $pid,
+			"clid"  => $clid,
+			"did"   => $did
+		]);
+
+		//отправим смс
+		if ($config['sendsms']) {
+
+			$smsfile = $rootpath.'/plugins/smsSender/data/'.$fpath.'settings.json';
+			if (file_exists($smsfile)) {
+
+				$smssender = json_decode(file_get_contents($smsfile), true);
+
+				require_once $rootpath."/plugins/smsSender/SendSMS.php";
+
+				$params   = [
+					"phone"   => getPersonPhone($pid),
+					"content" => $pid.': '.$config['text']
+				];
+				$sms      = new pSMS\SendSMS();
+				$response = $sms -> sendSMS("send", $params);
+
+				//логирование
+				$db -> query("INSERT INTO ".$sqlname."logsms SET ?u", [
+					"uid"      => $response['uid'] + 0,
+					"datum"    => current_datumtime(),
+					"phone"    => $params['phone'],
+					"clid"     => $clid,
+					"pid"      => $pid,
+					"iduser"   => $iduser1 + 0,
+					"content"  => $params['content'],
+					"status"   => 0,
+					"identity" => $identity + 0
+				]);
+
+				//история
+				$db -> query("INSERT INTO ".$sqlname."history  SET ?u", [
+					'datum'    => current_datumtime(),
+					'iduser'   => $iduser1 + 0,
+					'clid'     => $clid,
+					'pid'      => $pid,
+					'des'      => $params['content'],
+					'tip'      => 'СМС',
+					'identity' => $identity
+				]);
+
+				//print_r($response);
+
+			}
+
+		}
+
+
+
+		//Отправим email посетителю
+		$Person = new \Salesman\Person();
+		$personInfo = $Person -> info($pid);	/*получаем информацию по контакту. Вся инфа хранится во вложенном массиве ['person']
+												$personInfo['person']['person'] - ФИО контакта
+												$personInfo['person']['mail'] - почта контакта
+												*/
+		/*$email_theme = "Вы прошли регистрацию на конференции AsterConf";
+		$email_text = 	$personInfo['person']['input10'].", привет!<br>
+			<br>
+			Мы рады, что в этот день Вы с нами! <br>
+			<br>
+			Коротко обо всем: <br>
+			Начинаем в 10-00, заканчиваем в 20-00.<br>
+			До начала можно угоститься чаем и кофе, а также посетить стенды наших партнеров.<br>
+			В 14-00 отправляемся на обед.<br>
+			<br>
+			Доклады идут в трех залах: большой зал на первом этаже и два малых зала - на втором этаже.<br>
+			Программа мероприятия лежит среди раздаточных материалов. Вы можете свободно перемещаться между залами, но только в перерывах.<br>
+			<br>
+			По любым вопросам Вы можете обращаться к любому из наших сотрудников в фирменных футболках.<br>
+			<br>
+			Вступайте в нашу группу в Telegram, где будет все оперативное общение: tg://asterconf-2019<br>";
+
+
+
+		$to = $personInfo['person']['mail'];
+		$toname = '<'.$to.'>';
+		$from = 'i.shavulskaya@voxlink.ru';
+		$fromname = 'Команда AsterConf';
+
+		mailer($to, $toname, $from, $fromname, $email_theme, $email_text); //отправка письма*/
+
+		print json_encode_cyr([
+			"error"    		=> 0,
+			"result"   		=> "Посетитель зарегистрирован",
+			"response" 		=> $response,
+			"pers_name" 	=> $personInfo['person']['input10'],
+			"pers_surname"	=> $personInfo['person']['input11'],
+			"pers_company"	=> $personInfo['person']['input12']
+		]);
+
+	}
+	else
+		print json_encode_cyr([
+			"error"    => 1,
+			"result"   => "Посетитель зарегистрирован ранее",
+			"response" => $response
+		]);
+
+	exit();
+
+}

@@ -1,0 +1,219 @@
+
+Вошел в скрипт
+Вошел в скрипт
+ Request: 
+Array
+(
+    [did] => 538
+    [autor] => 1
+    [stepOld] => 10
+    [stepNew] => 90
+    [reason] => 
+    [comment] => 
+    [event] => deal.change.step
+    [identity] => 1
+    [iduser1] => 1
+)
+
+ Инфа по сделке:
+Array
+(
+    [data] => Array
+        (
+            [did] => 538
+            [uid] => 
+            [datum] => 2018-09-16
+            [datum_izm] => 
+            [title] => СД537: Тест отправки билета
+            [mcid] => 2
+            [iduser] => 1
+            [user] => admin
+            [userUID] => 
+            [datum_plan] => 2018-09-30
+            [step] => 90
+            [stepID] => 7
+            [stepTitle] => Регистрация
+            [contractID] => 
+            [contractTitle] => 
+            [contractNumber] => 
+            [contractDate] => 
+            [tipID] => 8
+            [tip] => Asterconf
+            [directionID] => 1
+            [direction] => Основное
+            [content] => 
+            [kol] => 5800.00
+            [marga] => 5800.00
+            [datum_start] => 0000-00-00
+            [datum_end] => 0000-00-00
+            [close] => no
+            [datum_close] => 
+            [status_close] => 
+            [des_fact] => 
+            [kol_fact] => 0.00
+            [client] => Array
+                (
+                    [clid] => 526
+                    [title] => Тест отправки билета
+                    [des] => 
+                    [idcategory] => 0
+                    [category] => 
+                    [phone] => 
+                    [fax] => 
+                    [site_url] => 
+                    [mail_url] => 
+                    [address] => 
+                    [iduser] => 1
+                    [pid] => 
+                    [fav] => no
+                    [trash] => no
+                    [head_clid] => 
+                    [head] => 
+                    [scheme] => 
+                    [tip_cmr] => Потенциальный клиент
+                    [territory] => 0
+                    [territoryname] => 
+                    [creator] => admin
+                    [editor] => не определено
+                    [date_create] => 16.09.18,  17:53
+                    [date_edit] => 
+                    [recv] => Array
+                        (
+                            [clid] => 526
+                            [castUrName] => Тест отправки билета
+                            [castName] => Тест отправки билета
+                            [castInn] => 11111111
+                            [castKpp] => 
+                            [castBank] => 
+                            [castBankKs] => 
+                            [castBankRs] => 
+                            [castBankBik] => 
+                            [castOkpo] => 
+                            [castOgrn] => 
+                            [castDirName] => 
+                            [castDirSignature] => 
+                            [castDirStatus] => 
+                            [castDirStatusSig] => 
+                            [castDirOsnovanie] => 
+                            [castUrAddr] => 
+                            [castFacAddr] => 
+                            [castType] => client
+                        )
+
+                    [clientpath] => Входящий контакт
+                    [type] => client
+                    [clientpath2] => 6
+                    [uid] => 
+                    [relation] => Потенциальный клиент
+                    [priceLevel] => price_1
+                    [clientUID] => 
+                    [input2] => 
+                    [input3] => 
+                    [input4] => 
+                )
+
+            [payer] => Array
+                (
+                    [clid] => 526
+                    [title] => Тест отправки билета
+                    [des] => 
+                    [idcategory] => 0
+                    [category] => 
+                    [phone] => 
+                    [fax] => 
+                    [site_url] => 
+                    [mail_url] => 
+                    [address] => 
+                    [iduser] => 1
+                    [pid] => 
+                    [fav] => no
+                    [trash] => no
+                    [head_clid] => 
+                    [head] => 
+                    [scheme] => 
+                    [tip_cmr] => Потенциальный клиент
+                    [territory] => 0
+                    [territoryname] => 
+                    [creator] => admin
+                    [editor] => не определено
+                    [date_create] => 16.09.18,  17:53
+                    [date_edit] => 
+                    [recv] => Array
+                        (
+                            [clid] => 526
+                            [castUrName] => Тест отправки билета
+                            [castName] => Тест отправки билета
+                            [castInn] => 11111111
+                            [castKpp] => 
+                            [castBank] => 
+                            [castBankKs] => 
+                            [castBankRs] => 
+                            [castBankBik] => 
+                            [castOkpo] => 
+                            [castOgrn] => 
+                            [castDirName] => 
+                            [castDirSignature] => 
+                            [castDirStatus] => 
+                            [castDirStatusSig] => 
+                            [castDirOsnovanie] => 
+                            [castUrAddr] => 
+                            [castFacAddr] => 
+                            [castType] => client
+                        )
+
+                    [clientpath] => Входящий контакт
+                    [type] => client
+                    [clientpath2] => 6
+                    [uid] => 
+                    [relation] => Потенциальный клиент
+                    [priceLevel] => price_1
+                    [clientUID] => 
+                    [input2] => 
+                    [input3] => 
+                    [input4] => 
+                )
+
+            [person] => Array
+                (
+                    [0] => Array
+                        (
+                            [pid] => 688
+                            [title] => Ларшин Олег Олегович
+                            [post] => 
+                            [phone] => 89529805695
+                            [mob] => 89529805695
+                            [email] => o.larshin@salesman.pro
+                        )
+
+                    [1] => Array
+                        (
+                            [pid] => 689
+                            [title] => Иванов Иван Иванович
+                            [post] => 
+                            [phone] => 89529805695
+                            [mob] => 
+                            [email] => oleg@salesman.su
+                        )
+
+                )
+
+        )
+
+)
+
+ Переменные:
+Array
+(
+    [template] => 24
+    [clid] => 526
+    [did] => 538
+    [mcid] => 2
+    [iduser] => admin
+)
+
+
+13
+ массив контактов по сделке:
+Array
+(
+)

@@ -1,0 +1,323 @@
+
+Аргументы для создания дока:
+Array
+(
+    [did] => 1118
+    [idtype] => 12
+    [user] => i.shavulskaya@voxlink.ru
+)
+
+Аргументы для создания дока:
+Array
+(
+    [did] => 1118
+    [idtype] => 12
+)
+
+Аргументы для создания дока:
+Array
+(
+    [did] => 1118
+    [idtype] => 12
+    [iduser] => 
+)
+
+ Инфа из вебхука:
+Array
+(
+    [did] => 1118
+    [autor] => 2
+    [stepOld] => 70
+    [stepNew] => 80
+    [reason] => 1
+    [comment] => 1
+    [event] => deal.change.step
+    [identity] => 1
+    [iduser1] => 2
+)
+
+Аргументы для создания дока:
+Array
+(
+    [did] => 1118
+    [idtype] => 12
+    [iduser] => 0
+)
+
+Responce:
+Array
+(
+    [id] => 930
+    [message] => Array
+        (
+            [0] => Создан документ
+        )
+
+    [error] => Array
+        (
+        )
+
+)
+
+ Массив params:
+Array
+(
+    [template] => 13
+    [tags] => Array
+        (
+            [did] => 1118
+            [clid] => 786
+            [speka] => Array
+                (
+                    [0] => Array
+                        (
+                            [Number] => 1
+                            [Artikul] => 5
+                            [Title] => Бизнес-ланч
+                            [Kol] => 2,00
+                            [Edizm] => шт
+                            [Dop] => 1,00
+                            [PriceWoNds] => 350,00
+                            [Price] => 350,00
+                            [NdsPer] => 0
+                            [Nds] => 0,00
+                            [SumWoNds] => 700,00
+                            [Sum] => 700,00
+                            [Description] => -
+                            [Comment] =>  
+                            [spid] => 1983
+                        )
+
+                    [1] => Array
+                        (
+                            [Number] => 2
+                            [Artikul] => 3
+                            [Title] => Курс по MikroTik (Оба курса)
+                            [Kol] => 1,00
+                            [Edizm] => слушатель
+                            [Dop] => 1,00
+                            [PriceWoNds] => 2 000,00
+                            [Price] => 2 000,00
+                            [NdsPer] => 0
+                            [Nds] => 0,00
+                            [SumWoNds] => 2 000,00
+                            [Sum] => 2 000,00
+                            [Description] => -
+                            [Comment] => Ларшин Олег
+                            [spid] => 1984
+                        )
+
+                )
+
+            [spekaKol] => 3,00
+            [spekaNds] => 0,00
+            [spekaSum] => 2 700,00
+            [spekaSumWoNds] => 2 700,00
+            [spekadocOsnovanie] => Счет № от 
+            [tovar] => Array
+                (
+                    [0] => Array
+                        (
+                            [Number] => 1
+                            [Artikul] => 5
+                            [Title] => Бизнес-ланч
+                            [Kol] => 2,00
+                            [Edizm] => шт
+                            [Dop] => 1,00
+                            [PriceWoNds] => 350,00
+                            [Price] => 350,00
+                            [NdsPer] => 0
+                            [Nds] => 0,00
+                            [SumWoNds] => 700,00
+                            [Sum] => 700,00
+                            [Description] => -
+                            [Comment] =>  
+                            [spid] => 1983
+                        )
+
+                    [1] => Array
+                        (
+                            [Number] => 2
+                            [Artikul] => 3
+                            [Title] => Курс по MikroTik (Оба курса)
+                            [Kol] => 1,00
+                            [Edizm] => слушатель
+                            [Dop] => 1,00
+                            [PriceWoNds] => 2 000,00
+                            [Price] => 2 000,00
+                            [NdsPer] => 0
+                            [Nds] => 0,00
+                            [SumWoNds] => 2 000,00
+                            [Sum] => 2 000,00
+                            [Description] => -
+                            [Comment] => Ларшин Олег
+                            [spid] => 1984
+                        )
+
+                )
+
+            [tovarKol] => 3,00
+            [tovarNds] => 0,00
+            [tovarSum] => 2 700,00
+            [tovarSumWoNds] => 2 700,00
+            [usluga] => Array
+                (
+                )
+
+            [uslugaKol] => 0,00
+            [uslugaNds] => 0,00
+            [uslugaSum] => 0,00
+            [uslugaSumWoNds] => 0,00
+            [material] => Array
+                (
+                )
+
+            [materialKol] => 0,00
+            [materialNds] => 0,00
+            [materialSum] => 0,00
+            [materialSumWoNds] => 0,00
+            [invoices] => 
+            [compUrName] => Индивидуальный предприниматель Грушко Сергей Александрович
+            [compShotName] => ИП Грушко Сергей Александрович
+            [compUrAddr] => 127106, г.Москва, Гостиничный проезд, д.4 кв. 1
+            [compFacAddr] => 127106, г.Москва, Гостиничный проезд, д.4 кв. 1
+            [compInn] => 010511855130
+            [compKpp] => 590401001
+            [compOgrn] => 315774600168203
+            [compOkpo] => 0194066517
+            [compBankName] => МОСКОВСКИЙ ФИЛИАЛ АО КБ ”МОДУЛЬБАНК”
+            [compBankBik] => 044525092
+            [compBankKs] => 30101810645250000092
+            [compBankRs] => 40802810270010001104
+            [compDirName] => Грушко Сергея Александровича
+            [compDirStatus] => Индивидуальный предприниматель
+            [compDirSignature] => Грушко С.А.
+            [compDirOsnovanie] => Свидетельства о государственной регистрации физического лица в качестве индивидуального предпринимателя №315774600168203 от 19 мая 2015 года
+            [compUser] => Ларшин Олег
+            [compSignature] => ../cash/templates/stamp1518512674.png
+            [compLogo] => ../cash/templates/logo1518512974.png
+            [compName] => Наша
+            [compPhone] => +7(342)2067201
+            [compSite] => http://nasha.ru
+            [compMail] => info@nasha.ru
+            [castName] => Тестовый клиент
+            [castUrName] => Тестовый клиент
+            [castUrNameShort] => 
+            [castInn] => 
+            [castKpp] => 
+            [castBankName] => 
+            [castBankKs] => 
+            [castBankRs] => 
+            [castBankBik] => 
+            [castOkpo] => 
+            [castOgrn] => 
+            [castDirName] => 
+            [castDirSignature] => 
+            [castDirStatus] => 
+            [castDirStatSig] => 
+            [castDirOsnovanie] => 
+            [castUrAddr] => 
+            [castFacAddr] => 
+            [invoiceNum] => 
+            [invoiceDatum] => 01 Января 1970
+            [invoiceDatumShort] => 01.01.1970
+            [summaCredit] => 0,00
+            [summaNds] => 0,00
+            [summaPropis] => Две тысячи семьсот рублей 00 копеек
+            [summaDogovor] => 2 350,00
+            [summaDogovorPropis] => Две тысячи триста пятьдесят рублей 00 копеек
+            [dogNum] => 697
+            [dogDate] => 13.11.2019
+            [dogDateCreate] => 2019-11-13
+            [dogAdres] => 
+            [dogTitle] => СД1118: Тест билетов
+            [dogContent] => 
+            [dogDataStart] => 
+            [dogDataEnd] => 
+            [docNum] => 697
+            [docDate] => 13.11.2019
+            [docDStart] => 13.11.2019
+            [docDEnd] => 31.12.2019
+            [docOsnovanie] => Счет № от 
+            [currentDatum] => 13 Ноября 2019
+            [currentDatumShort] => 13.11.2019
+            [UserName] => Ларшин Олег
+            [UserPhone] => 
+            [UserMob] => 2
+            [UserStatus] => Администратор
+            [UserEmail] => oleg@salesman.su
+            [clientFtitle] => Тестовый клиент
+            [clientFphone] => 
+            [clientFmail_url] => 
+            [clientFaddress] => 
+            [clientFsite_url] => 
+            [clientFinput2] => 
+            [personFperson] => Ларшин Олег
+            [personFptitle] => 
+            [personFtel] => 
+            [personFmail] => oleg@salesman.pro
+            [personFinput10] => 
+            [personFinput11] => 
+            [personFinput12] => 
+            [personFrol] => 
+            [personFinput1] => 
+            [currencyName] => 
+            [currencySymbol] => 
+            [currencyCourse] => 
+            [personFinput6] => 
+        )
+
+    [tagsAttached] => Array
+        (
+            [images] => Array
+                (
+                    [barcode] => 930.jpg
+                )
+
+        )
+
+)
+
+
+ Сгенерили документ!Данные по нновому доку: 
+Array
+(
+    [deid] => 930
+    [datum] => 2019-11-13 13:26:37
+    [number] => 697
+    [datum_start] => 2019-11-13
+    [datum_end] => 2019-12-31
+    [des] => 
+    [clid] => 786
+    [payer] => 786
+    [pid] => 
+    [did] => 1118
+    [ftitle] => Билет №697 от 13.11.2019.docx
+    [fname] => 1573640797.docx
+    [ftype] => application/vnd.openxmlformats-officedocument.wordprocessingml.document
+    [iduser] => 0
+    [title] => Билет
+    [idtype] => 12
+    [crid] => 0
+    [mcid] => 0
+    [status] => 
+    [files] => Array
+        (
+            [0] => Array
+                (
+                    [name] => Билет №697 от 13.11.2019.docx
+                    [file] => 1573640797.docx
+                    [type] => docx
+                )
+
+        )
+
+)
+
+ отправили документ!
+Array
+(
+    [result] => Успешно
+    [data] => 930
+    [text] => Сделано
+)
