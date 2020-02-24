@@ -1,7 +1,7 @@
 <?php
 if ($_REQUEST['clid'] == '' || $_REQUEST['did'] == '' ) {
-	print "Вы перешли по некорректной ссылке! <br> Свяжитесь с нами!";
-	exit();	
+	//print "Вы перешли по некорректной ссылке! <br> Свяжитесь с нами!";
+	//exit();	
 } 
 
 ?>
@@ -13,15 +13,16 @@ if ($_REQUEST['clid'] == '' || $_REQUEST['did'] == '' ) {
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-	
+	<link rel="stylesheet" type="text/css" href="anketa.css">
 	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 	<script type="text/javascript">
+
 $(document).ready(function(){
 
     var i =  1;
 
     $('#addPers').click(function() {
-        $('<div class="cloned-pers"><H3>Данные участника:</H3><p><input name="name_'+i+'" type="text" value="" placeholder="Имя участника" required></p><p><input name="mail_'+i+'" type="email" value="" placeholder="Email участника" required></p><p><input name="phone_'+i+'" type="tel" value="" placeholder="Тел. участника" required></p><div><p><H3>Участие: </H3><br><input type="radio" name="participation_'+i+'" value="dall" checked> Оба дня<input type="radio" name="participation_'+i+'" value="d1"> День 1<input type="radio" name="participation_'+i+'" value="d2"> День 2	<input type="radio" name="participation_'+i+'" value="online"> Онлайн</p><p><H3>Бизнес-ланч: </H3><br><input type="radio" name="lunch_'+i+'" value="d1"> День 1<input type="radio" name="lunch_'+i+'" value="d2"> День 2<input type="radio" name="lunch_'+i+'" value="dall"> Оба дня<input type="radio" name="lunch_'+i+'" value="no" checked> Нет</p><p><H3>Банкет на второй день: </H3><br><input type="radio" name="banket_'+i+'" value="yes"> Да<input type="radio" name="banket_'+i+'" value="no" checked> Нет	</p></div><div><label><input type="checkbox" name="yhotel_'+i+'" value="yes" onchange="showRoom(this);"/> Заказать гостиницу</label><div style="display:none;"><p>Въезд: <input name="arrival_'+i+'" type="date" min="2019-11-01"> - Выезд: <input name="departure_'+i+'" type="date" min="2019-11-01"></p><p><input type="radio" name="room_'+i+'" value="single"> Одноместный<input type="radio" name="room_'+i+'" value="double" checked> Двухместный</p></div><br>----------------------------------------------------<br></div>').fadeIn(300).appendTo('#alldata');
+        $('<div class="cloned-pers"><H3>Данные участника:</H3><p><input name="name_'+i+'" type="text" value="" placeholder="Имя участника" required></p><p><input name="mail_'+i+'" type="email" value="" placeholder="Email участника" required></p><p><input name="phone_'+i+'" type="tel" value="" placeholder="Тел. участника" required></p><div><p><H3>Участие: </H3><input type="radio" name="participation_'+i+'" value="dall" checked> Оба дня<input type="radio" name="participation_'+i+'" value="d1"> День 1<input type="radio" name="participation_'+i+'" value="d2"> День 2	<input type="radio" name="participation_'+i+'" value="online"> Онлайн</p><p><H3>Бизнес-ланч: </H3><input type="radio" name="lunch_'+i+'" value="d1"> День 1<input type="radio" name="lunch_'+i+'" value="d2"> День 2<input type="radio" name="lunch_'+i+'" value="dall"> Оба дня<input type="radio" name="lunch_'+i+'" value="no" checked> Нет</p><p><H3>Банкет на второй день: </H3><input type="radio" name="banket_'+i+'" value="yes"> Да<input type="radio" name="banket_'+i+'" value="no" checked> Нет	</p></div><div class="bottom_border_dot"><label><input type="checkbox" name="yhotel_'+i+'" value="yes" onchange="showRoom(this);"/> Заказать гостиницу</label><div style="display:none;"><p>Въезд: <input name="arrival_'+i+'" type="date" min="2019-11-01"> - Выезд: <input name="departure_'+i+'" type="date" min="2019-11-01"></p><p><input type="radio" name="room_'+i+'" value="single"> Одноместный<input type="radio" name="room_'+i+'" value="double" checked> Двухместный</p></div></div>').fadeIn(300).appendTo('#alldata');
         i++;
         if (i>1){
         	$('#removePers').show();
@@ -77,8 +78,13 @@ $(document).ready(function(){
 </head>
 <body>
 	
+<div class="anketa">
+	<div class="nav">
+		 
+		<p>Анкета клиента</p><img id="logo" src="logo.png">
+	</div>
+	
 
-	<H1>Анкета клиента</H1>
 	<form action="formhandler.php" method="post">
 		<div id="alldata" name="alldata">
 			<?php
@@ -130,24 +136,24 @@ $(document).ready(function(){
 				//unset($_REQUEST);
 			?>	
 				<div name="reservation">
-					<p><H3>Участие: </H3><br>
+					<p><H3>Участие: </H3>
 					<input type="radio" name="participation_0" value="dall" checked> Оба дня
 					<input type="radio" name="participation_0" value="d1"> День 1
 				   	<input type="radio" name="participation_0" value="d2"> День 2
 					<input type="radio" name="participation_0" value="online"> Онлайн
 				   	</p>
-					<p><H3>Бизнес-ланч: </H3><br>
+					<p><H3>Бизнес-ланч: </H3>
 					<input type="radio" name="lunch_0" value="d1"> День 1
 				   	<input type="radio" name="lunch_0" value="d2"> День 2
 				   	<input type="radio" name="lunch_0" value="dall"> Оба дня
 				   	<input type="radio" name="lunch_0" value="no" checked> Нет
 				   	</p>
-				   	<p><H3>Банкет на второй день: </H3><br>
+				   	<p><H3>Банкет на второй день: </H3>
 					<input type="radio" name="banket_0" value="yes"> Да
 				   	<input type="radio" name="banket_0" value="no" checked> Нет
 				   	</p>
 				</div>
-				<div>
+				<div class="bottom_border_dot">
 				<label><input type="checkbox" name="yhotel_0" value="yes" onchange="showRoom(this);"/> Заказать гостиницу</label>
 				
 				<div class="is-hotel" style="display:none;">
@@ -156,15 +162,20 @@ $(document).ready(function(){
 					<p><input type="radio" name="room_0" value="single"> Одноместный
 				   	<input type="radio" name="room_0" value="double" checked> Двухместный</p>
 				</div>
-				<br>----------------------------------------------------<br>
+				
 				</div>
 			</div>
-			
-		</div>
+			</div>
 		
-		<input type="submit" value="Отправить">
+		
+		<center><input id="submit" type="submit" value="Отправить"></center>
+		
 	</form>
-	<button id="addPers">Добавить участника</button>
-	<button id="removePers" style="display:none;">Удалить участника</button>
+	<center>
+		<button id="addPers">Добавить участника</button>
+		<button id="removePers" style="display:none;">Удалить участника</button>
+	</center>
+
+</div>
 </body>
 </html>

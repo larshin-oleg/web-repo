@@ -1,0 +1,122 @@
+body {
+    color: #d1cbcb;
+    background-color: #ededed;
+}
+
+
+
+h3 {
+    color: #dc8545;
+    text-align: center;
+}
+select {
+    border-radius: 5px;
+    font-size: 14px;
+}
+input {
+    border-radius: 5px;
+    font-size: 14px;
+}
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+}
+input[type="email"] {
+    width: 100%;
+    padding: 10px;
+}
+input[type="tel"] {
+    width: 100%;
+    padding: 10px;
+}
+
+button {
+	margin: 10px;
+	border-radius: 5px;
+    font-size: 18px;
+    height: 25px;
+    
+}
+
+input[type="submit"] {
+    background-color:  #0339fc;
+    color: #ffffff;
+    font-size: 18px;
+    padding: 5px;
+    border: 1px solid #000000;
+    box-shadow: 3px 3px 7px #000000;
+}
+
+
+#logo {
+    height: 35px;
+    width: 35px;
+    padding-top: 0px;
+}
+
+.nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 50px;
+    background: #3e4757;
+    font-family: "Open Sans",Arial,sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 40px;
+    line-height: 48px;
+    color: #ffffff;
+    text-transform: uppercase;
+    z-index: 100;
+}
+
+
+
+#addPers {
+    background-color: #59d62b;
+    color: #3b3a39;
+    font-weight: bold;
+    border: 1px solid #000000;
+    box-shadow: 3px 3px 7px #000000;
+}
+
+#removePers {
+    border: 1px solid #000000;
+    box-shadow: 3px 3px 7px #000000;
+    background-color: #d11a0d;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.anketa {
+	position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+    margin-top: 60px;
+    padding: 0;
+    border: 2px solid #000000;
+    padding: 10px;
+    background: #3e4757;
+    border-radius: 15px;
+    box-shadow: 3px 3px 7px #000000;
+}
+
+#alldata {
+	position: relative;
+    max-width: 450px;
+    margin: 0 auto;
+    padding: 0;
+    /*border: 2px solid #000000;*/
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.bottom_border_dot {
+    border-bottom: 2px dotted #ffffff;
+    padding-bottom: 10px;
+}
