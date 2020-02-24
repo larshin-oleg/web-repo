@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>Игра в слова</title>
+</head>
+<body>
+	<script type="text/javascript">
+		/*var name = prompt("Как тебя зовут?");
+		alert("Привет, "+name+"!");
+
+		var likeCat = confirm("Тебе нравятся котики?");
+		if (likeCat) {
+			alert("Молодец! Мне тоже нравятся котики!");
+		} else {
+			alert("Не может быть! Всем нравятся котики!");
+		};*/
+
+		var words = ["слон", "крот", "буква", "цикл", "слово", "рыба", "русалка", "повелитель"];
+		var word = words[Math.floor(Math.random()*words.length)];//Случайное слово
+
+		var answerArr = []; //Массив с ответом
+		for (var i = 0; i < word.length; i++) {
+			answerArr[i] = "_";
+		};
+		var remainingLetters = word.length;
+
+		while (remainingLetters > 0){
+			var guess = prompt("Угадай букву слова или Отмена для выхода из игры. \n Слово: "+answerArr.join(" "));
+
+			if (guess === null) {
+				alert("Жаль, что ты так рано сдаешься ;(");
+				break;
+			}else if (guess.length !==1) {
+				alert("Введи ТОЛЬКО 1 букву");
+			} else {
+				for (var j = 0; j < word.length; j++) {
+					if (word[j] === guess) {
+						answerArr[j] = guess;
+						remainingLetters--;
+					};
+				};
+					
+			};
+			if (remainingLetters == 0){
+				alert("Поздравляем! Ты победил!");
+			}
+			
+		}
+	</script>
+</body>
+</html>

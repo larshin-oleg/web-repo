@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>Canvas 1 Пчела</title>
+
+</head>
+<body>	
+	<canvas id="canvas" width="200" height="200"></canvas>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.0.js"></script>
+	<script type="text/javascript">
+		var canvas = document.getElementById("canvas"); //сохраняем элемент canvas
+		var ctx = canvas.getContext("2d"); //Получаем контекст рисования
+		ctx.lineWidth = 2;
+
+		//квадрат-бегущая строка
+		/*var position = 0;
+		setInterval(function (){
+			ctx.clearRect(0, 0, 200, 200); //очистка холста
+			ctx.fillRect(position, 0, 20, 20); //Рисуем квадрат 20*20
+			position++; //изменение позиции
+			if (position > 200) {
+				position = 0; //обнуление позиции, когда дошли до конца
+			};
+		}, 30);//каждые 30 мсек*/
+		
+		//изменение размера квадрата
+		/*var size = 0;
+		setInterval(function (){
+			ctx.clearRect(0, 0, 200, 200); //очистка холста
+			ctx.fillRect(0, 0, size, size); //Рисуем квадрат
+			size++; //изменение размера
+			if (size > 200) {
+				size = 0; //обнуление размера
+			};
+		}, 30);//каждые 30 мсек*/
+
+		//рисуем и анимируем пчелу:
+	 	function circle (x, y, radius, fillCircle){ //функция для отрисовки окружности
+	 		ctx.beginPath();
+	 		ctx.arc(x, y, radius, 0, Math.PI*2, false); //Используем метод arc для создания окружности
+	 		if (fillCircle) { //если задана заливка круга
+	 			ctx.fill(); //заливаем окружность
+	 		} else {
+	 			ctx.stroke(); //иначе рисуем контур
+	 		};
+	 	}; 
+
+	 	function drawBee(x, y){ //функция для отрисовки пчелы
+	 		ctx.lineWidth = 2; //Установим толщину линии
+	 		ctx.strokeStyle = "Black";
+	 		ctx.fillStyle = "Gold";
+
+	 		circle(x, y, 8, true); //Рисуем набор окружностей
+	 		circle(x, y, 8, false);
+	 		circle(x-5, y-11, 5, false);
+	 		circle(x+5, y-11, 5, false);
+	 		circle(x-2, y-1, 2, false);
+	 		circle(x+2, y-1, 2, false);
+	 	}
+
+	 	function update(coordinate){ //функция для обновления координат
+	 		var offset = Math.random()*4 - 2; //offset - смещение
+	 		coordinate += offset; //изменяем координату на величину смещения
+	 		//Проверки на вылет пчелы с холста:
+	 		if (coordinate > 200) { 
+	 			coordinate = 200;
+	 		};
+	 		if (coordinate < 0) {
+	 			coordinate = 0;
+	 		};
+	 		return coordinate; //возвращаем новую координату
+	 	}
+
+	 	var x = 100;
+	 	var y = 100;
+	 	setInterval(function () {
+	 		ctx.clearRect(0, 0, 200, 200); //очищаем холст
+	 		drawBee(x,y); //рисуем пчелу в координатах (x,y)
+	 		x = update(x); //Обновляем x и y
+	 		y = update(y);
+	 		ctx.strokeRect(0, 0, 200, 200); //Обводим рамкой холст
+	 	},30);
+
+	</script>
+</body>
+</html>

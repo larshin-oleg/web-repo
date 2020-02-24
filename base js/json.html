@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JSON</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var object = {
+			"firstName": "Иван",
+			"lastName": "Иванов",
+			"address": {
+				"streetAddress": "ул. Пушкина д 24",
+				"city": "Москва",
+				"postalCode": "101101"
+			},
+			"phoneNumbers": [
+				"222222",
+				"8 800 0000000"
+			]
+		};
+
+		var array = [
+			10,
+			"text",
+			true,
+			false,
+			null,
+			[1,2,3],
+			{"age": 20}
+		];
+
+		//console.log(object);
+		//console.log(array);
+
+		var json = JSON.stringify(object); //Проеобразует JS-объект в JSON формат
+		console.log(json);
+
+		var newJSObj = JSON.parse(json); //Преобразуем JSON в объект JS
+		console.log(newJSObj);
+
+	</script>
+</body>
+</html>

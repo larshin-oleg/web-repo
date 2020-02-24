@@ -1,0 +1,67 @@
+body {
+	background-image: url(../img/div.jpg);
+
+}
+
+input {
+	margin: 5px;
+}
+button {
+	border-radius: 10px;
+    background-color: #b1b1b5;
+}
+
+button:hover {
+	transform: scale(1.3);
+}
+
+.modal_win {
+	background-color: #5d579c;
+	color: #ffffff;
+	text-align: left;
+	padding: 15px;
+	width: 200px;
+	position: absolute;
+    top: 30%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #2f3841; 
+	border-radius: 10px;
+}
+
+.div_modal_win {
+	border-top: 2px solid #151454;
+	margin: auto;
+	padding: 10px;	
+}
+
+.submit_modal_win {
+	margin-left: 25%;
+    
+    border-radius: 10px;
+    background-color: #b1b1b5;
+}
+
+#modalForm {
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	z-index: 100;
+	display: none;
+	margin: 0 auto;
+	width: 200px;
+}
+
+#filter {
+	background-color: rgba(0, 0, 0, 0.6);
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	z-index: 100;
+	display: none;
+}

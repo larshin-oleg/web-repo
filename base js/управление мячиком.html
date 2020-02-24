@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>Управление с клавиатуры</title>
+
+</head>
+<body>	
+	<canvas id="canvas" width="200" height="200"></canvas>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.0.js"></script>
+	<script type="text/javascript">
+		var canvas = document.getElementById("canvas");
+		var ctx = canvas.getContext("2d");
+		var width = canvas.width;
+		var height = canvas.height;
+		
+		function circle (x, y, radius, fillCircle){ //отрисовка окружности
+			ctx.beginPath();
+			ctx.arc(x, y, radius, 0, Math.PI*2, false);
+			if (fillCircle) {
+				ctx.fill();
+			} else {
+				ctx.stroke();
+			};
+		};
+
+		var Ball = function(){
+			this.x = width / 2;
+			this.y = height / 2;
+			this.xSpeed = 5;
+			this.ySpeed = 0;
+		};
+
+		Ball.prototype.move = function(){
+			this.x += this.xSpeed;
+			this.y += this.ySpeed;
+			//Перескок к противоположной границе холста
+			if (this.x < 0) {
+				this.x = width;
+			} else if (this.x >width) {
+				this.x = 0;
+			};
+
+			if (this.y < 0) {
+				this.y = height;
+			} else if (this.y >height) {
+				this.y = 0;
+			};
+		};
+
+		Ball.prototype.draw = function(){
+			circle(this.x, this.y, 10, true);
+		};
+
+		Ball.prototype.setDirection = function(direction){ //зададим направления
+			switch(direction){
+				case 'up': 
+					this.xSpeed = 0;
+					this.ySpeed = -5;
+					break;
+				case 'down':
+					this.xSpeed = 0;
+					this.ySpeed = 5;
+					break;
+				case 'left':
+					this.xSpeed = -5;
+					this.ySpeed = 0;
+					break;
+				case 'right':
+					this.xSpeed = 5;
+					this.ySpeed = 0;
+					break;
+				case 'stop':
+					this.xSpeed = 0;
+					this.ySpeed = 0;
+					break;
+			};
+		};
+
+		var ball = new Ball();
+		
+		var keyActions = { //коды клавиш
+			32: "stop", //пробел 
+			37: "left", //стрелка влево
+			38: "up", //стрелка вверх
+			39: "right", //стрелка вправо
+			40: "down" //стрелка вниз
+		};
+		
+		$("body").keydown(function(event){
+			var direction = keyActions[event.keyCode];
+			ball.setDirection(direction);
+		});
+
+		//Анимация:
+		setInterval(function(){
+			ctx.clearRect(0, 0, width, height); //очищаем холст
+			ball.draw();
+			ball.move();
+			ctx.strokeRect(0, 0, width, height);
+		}, 30);
+
+	</script>
+</body>
+</html>

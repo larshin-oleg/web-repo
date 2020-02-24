@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title> Строки, шаблонные литералы</title>
+	
+</head>
+<body id="top">
+	
+	<script type="text/javascript">
+	var a, b, c;
+	a = 10;
+	b = true;
+	c = "String";
+
+	//console.log("Число a=" + a +"\nЧисло b=" + b +"\nЧисло c=" + c); //Обычная конкотенация
+
+	console.log(`Число a=${a}
+		Число b=${b}
+		Число c=${c}`); //Шаблонные строки. Используем ковычки на клавише ё
+	
+
+	//Тернарный оператор:
+	var age = 19;
+	age > 18 ? console.log("Вы старше 18") : console.log("Вы младше 18"); //Тернарный оператор способ 1
+
+	age > 18 ? (
+		console.log("Вы старше 18"),	//Для нескольких операций (оп1, оп2)
+		console.log("Успех!")
+		): (
+		console.log("Вы младше 18"),
+		console.log("Неудача!")); //Для нескольких операций
+
+	alert(age > 18 ? "Вы старше 18" : "Вы младше 18"); //Тернарный оператор способ 2
+	
+
+	</script>
+		
+</body>
+</html>

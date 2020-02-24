@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>Основы ООП</title>
+
+</head>
+<body>	
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.0.js"></script>
+	<script type="text/javascript">
+		//Стандартная работа с Объектами:
+		/*var Car = function(x,y){
+			this.x = x;
+			this.y = y;
+		};
+
+		function drawCar(car){
+			var carHtml = '<img src="https://png.icons8.com/color/180/fiat-500.png">';
+			var carElement = $(carHtml);
+			carElement.css({
+				position: "absolute",
+				left: car.x,
+				top: car.y
+			});
+			$("body").append(carElement);
+		}
+
+		var tesla = new Car(10,10);
+		var nissan = new Car(500, 200);
+		var nissan2 = new Car(100, 500);
+		drawCar(tesla);
+		drawCar(nissan);
+		drawCar(nissan2);*/
+
+		//работа с объектами через прототипы:
+		var Car = function(x,y){
+			this.x = x;
+			this.y = y;
+		};
+
+		Car.prototype.draw = function(){
+			var carHtml = '<img src="https://png.icons8.com/color/180/fiat-500.png">';
+			this.carElement = $(carHtml);
+			this.carElement.css({
+				position: "absolute",
+				left: this.x,
+				top: this.y
+			});
+			$("body").append(this.carElement);
+		}
+
+		Car.prototype.moveRight = function(){
+			this.x += 5;
+			this.carElement.css({
+				left: this.x,
+				top: this.y
+			});
+		}
+		Car.prototype.moveLeft = function(){
+			this.x -= 5;
+			this.carElement.css({
+				left: this.x,
+				top: this.y
+			});
+		}
+		Car.prototype.moveUp = function(){
+			this.y -= 5;
+			this.carElement.css({
+				left: this.x,
+				top: this.y
+			});
+		}
+		Car.prototype.moveDown = function(){
+			this.y += 5;
+			this.carElement.css({
+				left: this.x,
+				top: this.y
+			});
+		}
+
+		var tesla = new Car(10,10);
+		var nissan = new Car(500, 200);
+		var nissan2 = new Car(100, 500);
+		tesla.draw();
+		nissan.draw();
+		nissan2.draw();
+
+		tesla.moveRight();
+		nissan.moveRight();
+		nissan2.moveRight();
+
+		tesla.moveLeft();
+		nissan.moveLeft();
+		nissan2.moveLeft();
+
+		tesla.moveUp();
+		nissan.moveUp();
+		nissan2.moveUp();
+		
+		tesla.moveDown();
+		nissan.moveDown();
+		nissan2.moveDown();
+
+
+	</script>
+</body>
+</html>

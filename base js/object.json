@@ -1,0 +1,13 @@
+{
+	"firstName": "Иван",
+	"lastName": "Иванов",
+	"address": {
+		"streetAddress": "ул. Пушкина д 24",
+		"city": "Москва",
+		"postalCode": "101101"
+	},
+	"phoneNumbers": {
+		"222222",
+		"8 800 0000000"
+	}
+}

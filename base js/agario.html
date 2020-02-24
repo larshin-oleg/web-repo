@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>Интерактивное программирование</title>
+
+</head>
+<body>
+	<H1 id="heading">Hello, world!</H1>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.0.js"></script>
+	<script type="text/javascript">
+		/*function timeToDo(){
+			alert("Принимайся за работу!");
+		}
+		var	timeoutId = setTimeout(timeToDo, 6000);
+
+		clearTimeout(timeoutId);
+
+		var counter = 1;
+		function printMessage(){
+			console.log('Ты смотришь в консоль уже '+ counter + ' сек');
+			counter++
+		}
+
+		var intervalId = setInterval(printMessage, 1000);
+		clearInterval(intervalId);*/
+		//Анимация псевдо бегущая строка:
+		/*var leftOffset = 0;
+		function moveHeading(){
+			$('#heading').offset({left: leftOffset});
+			leftOffset++;
+			if (leftOffset > 200) {
+				leftOffset = 0;
+			}
+		}
+		setInterval(moveHeading, 30);*/
+
+		function clickHandler(event){
+			console.log("Клик! "+ event.pageX +" " + event.pageY);
+		}
+		$("H1").click(clickHandler);
+		//Заголовок бегает за мышкой:
+		$("html").mousemove(function(event){
+			$("#heading").offset({
+				left: event.pageX,
+				top: event.pageY
+			});
+		});
+	</script>
+</body>
+</html>

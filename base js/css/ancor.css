@@ -1,0 +1,39 @@
+.nav {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 50px;
+	background: #7975a1;
+	color: #ffffff;
+
+}
+
+.block {
+	width: 100%;
+	height: 500px;
+	background: #4e4e4e;
+	color: #fff;
+	margin-bottom: 10px;
+	font-size: 50px;
+	line-height: 50px;
+	text-align: center;
+	margin: 50px;
+	margin-top: 60px;
+	
+}
+
+a {
+	padding: 0 15px;
+}
+
+.active {
+	background-color: #eeeeee;
+	height: 50px;
+	line-height: 50px;
+	color: #000;
+	text-decoration: none;
+}

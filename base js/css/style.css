@@ -1,0 +1,56 @@
+/* Селектор по имени тэга. Применяется ко всем ссылкам (тэг <a>, <div> И т.д.):*/
+a { 
+	color: red;
+	font-size: 20px;
+}
+
+div {
+	/*color: #19FBFF; /*hex*/
+	/*color: rgb(255,0,0); /*rgb*/
+	color: rgba(255,0,0,0.2);/*rgba - как РГБ, 4-й параметр - прозрачность*/
+}
+
+/* Селектор по ID элемента */
+#idhref2 {
+	color: green;
+}
+
+#test_link {
+	font-size: 25px;
+	color: purple;
+}
+
+/* Селектор по классу эл-та */
+.message {
+	color: #747474; /* Цвет текста */
+	background-color: #e4e4e4; /* Цвет фона */
+	border: 1px solid #323232; /*Параметры: толщина тип(solid,dashed) цвет*/;
+	margin: 10px; /* Внешние отступы со всех сторон. Есть еще margin-bottom margin-top margin-left margin-right*/
+	padding: 15px; /* Внутренние отступы. Аналогично margin. Есть отступы отдельно с каждой стороны (см выше) */
+}
+.success {
+	background-color: #19a15f;
+	color: #ffffff;
+}
+
+.fail {
+	background-color: #d65144;
+	color: #ffffff;
+}
+
+.info {
+	background-color: #4b8bf5;
+	color: #ffffff;
+}
+
+.warning {
+	background-color: #ffce43;
+	color: #000000;
+}
+
+/* Событийные селекторы */
+.message:hover { /* При наведении мыши */
+	border: 10px solid #323232;
+}
+
+

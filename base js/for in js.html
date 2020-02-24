@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>Цикл for in</title>
+	
+</head>
+<body id="top">
+	
+	<script type="text/javascript">
+
+		var arr = [
+			{
+				"original_name": "Fight Club",
+				"russian_name": "Бойцовский клуб",
+				"year": 1999,
+				"actors": [
+					"Эдвард Нортон",
+					"Брэд Питт",
+					"Хелена Бонэм Картер"
+				]
+			},
+			{
+				"original_name": "The Mask",
+				"russian_name": "Маска",
+				"year": 1994,
+				"actors": [
+					"Джим Керри",
+					"Кэмерон Диаз"
+				]
+			},
+			{
+				"original_name": "Rocky III",
+				"russian_name": "Рокки 3",
+				"year": 1982,
+				"actors": [
+					"Сильвестр Сталоне",
+					"Мистер Ти",
+					"Талия Шайр",
+					"Бёрджес Мередит"
+				]
+			},
+		];
+
+		for (let count = 0; count < arr.length; count++){
+			console.log("======== Фильм " +(count+1)+ " ========");
+			for(let object_count in arr[count]){
+				switch (object_count){
+					case 'original_name': 	console.log("Оригинальное название: "+arr[count][object_count]);
+											break;
+					case 'russian_name': 	console.log("Перевод названия: "+arr[count][object_count]);
+											break;
+					case 'year': 			console.log("Год: "+arr[count][object_count]);
+											break;
+				}
+
+				if (object_count == "actors") {
+					for (let actors_count = 0; actors_count < arr[count][object_count].length; actors_count++){
+						console.log("Актер "+(actors_count+1)+": "+arr[count][object_count][actors_count]);
+					}
+				};
+			}
+		}
+
+
+	</script>
+		
+</body>
+</html>

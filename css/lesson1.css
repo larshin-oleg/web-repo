@@ -1,0 +1,30 @@
+.h2 {
+	font-size: 50px;
+	color: #ffffff;
+}
+
+.h2:before {
+	content: "";
+	background: transparent;
+}
+
+
+body {
+	margin: 0 auto;
+	max-width: 1260px;
+}
+
+body h2{
+	font-size: 35px;
+	margin: 20px 0px;
+	text-transform: uppercase;
+	color: #808080;
+	padding-bottom: 5px;
+	display: inline-block;
+	position: relative;
+}
+
+body .recieve p {
+	font-size: 22px;
+	margin-bottom: 50px;
+}

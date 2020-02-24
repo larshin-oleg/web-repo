@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>DOM и JQuery</title>
+</head>
+<body>
+	<H1>DOM и JQuery на JavaScript</H1>
+	<H1 id="main-heading">Привет, мир!</H1>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.js"></script>
+	<script type="text/javascript">
+		/*var headingElement = document.getElementById("main-heading");
+		var newText = prompt("Текущий заголовок: "+headingElement.innerHTML+"\n Введите новый заголовок:");
+		headingElement.innerHTML = newText;*/
+		/*
+		for (var i = 0; i < 3; i++) {
+			var hobby = prompt("назови свои хобби:")
+			$("body").append("<p>"+hobby+"</p>");
+		};*/
+
+		//Анимация:	
+		/*$(document).ready(function() {
+	        $("H1").text("Я исчезаю!").fadeOut(3000);
+	        setTimeout(main, 5000);
+	    });
+	    
+	    function main() {
+	        $("H1").text("Я появляюсь!").fadeIn(3000);
+	    }*/
+
+	    //$("H1").fadeOut(3000).fadeIn(3000);
+		$("H1").slideUp(3000).slideDown(3000);
+			
+
+		
+	</script>
+</body>
+</html>

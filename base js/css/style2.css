@@ -1,0 +1,31 @@
+body {
+	background-image: url(../img/div.jpg); /* Фоновое изображение для body */
+}
+
+#test {
+	background-color: #ffffff;
+	color: #000000;
+	padding: 15px;
+	margin: 15px;
+	border: 1px solid red; /*#2f3841*/
+	border-radius: 10px; /* Закругление рамки */
+	opacity: 0.9; /* Прозрачность элемента 0 - невидимый; 1 - непрозрачный*/ 
+	box-shadow: 3px 3px 7px #000000; /* Тень. Параметры: сдвиг по X (-X - влево), сдвиг по Y (-Y - Вверх), размытие тени, цвет */
+	width: 100px; /* ширина элемента (в пикселях, либо % от ширины страницы)*/
+	height: 50px; /* Высота элемента */
+	display: block; /* видимость элемента. none - невидимый */
+	text-align: center; /* Выравнивание текста */
+	font-size: 30px; /* по умолчнию 16px */
+	font-weight: 900; /* Жирность шрифта, по умолчанию 400 */
+/* Св-ва CSS3: */
+	/*transform: rotate(90deg); /* Поворот эл-та на 90 градусов */ 
+	/*transform: rotate(45deg) scale(0.5); /* Поворот на 45 и уменьшение на 50%*/
+}
+
+#test:hover {
+	/*opacity: 1; /* Полностью видимый при наведении мыши */
+	/* Св-ва CSS3: */
+	transform: rotate(359deg) scale(0.3);
+	transition: 5s transform; /* за сколько сек применяем свойство и какое (поворачиваем на 359 град. за 5 сек) */
+}
+
