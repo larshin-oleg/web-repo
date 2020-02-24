@@ -1,0 +1,58 @@
+
+
+
+ Из формы:
+Array
+(
+    [castUrName] => ООО Тест
+    [castInn] => 2222
+    [castKpp] => 2222
+    [castBank] => ООО Банк
+    [castBankBik] => 444444
+    [castBankRs] => 666666666
+    [castBankKs] => 111111111111
+    [castDirName] => Иванов Дмитрий Геннадиевич
+    [castDirStatus] => Ген. Директор
+    [castUrAddr] => Адрес
+    [clid] => 740
+    [did] => 859
+    [name_0] => Тест Тестович
+    [mail_0] => oleg@salesman.pro
+    [phone_0] => +79525552222
+    [participation_0] => dall
+    [lunch_0] => dall
+    [banket_0] => yes
+    [yhotel_0] => yes
+    [arrival_0] => 2019-11-28
+    [departure_0] => 2019-12-02
+    [room_0] => single
+    [name_1] => Иванов Иван
+    [mail_1] => yhuiyh@hkih.hui
+    [phone_1] => 777777
+    [participation_1] => d2
+    [lunch_1] => d2
+    [banket_1] => yes
+    [yhotel_1] => yes
+    [arrival_1] => 2019-11-30
+    [departure_1] => 2019-12-03
+    [room_1] => double
+)
+
+ Из формы Физ:
+Array
+(
+    [payment] => roketbank
+    [clid] => 740
+    [did] => 859
+    [name_0] => Тест Тестович
+    [mail_0] => oleg@salesman.pro
+    [phone_0] => +79525552222
+    [participation_0] => dall
+    [lunch_0] => no
+    [banket_0] => no
+    [yhotel_0] => yes
+    [arrival_0] => 2019-11-29
+    [departure_0] => 2019-11-30
+    [room_0] => double
+)
+
