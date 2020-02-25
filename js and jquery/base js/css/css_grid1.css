@@ -1,19 +1,27 @@
 .grid-container {
 	display: grid;
-	grid-template-columns: 1fr 1fr 1fr; /* столбцы задаются в: px, %, fr (1fr - 1 свободное пр-во). Кол-во параметров - кол-во столбцов */
+	grid-template-columns: 100px 100px 100px; /* столбцы задаются в: px, %, fr (1fr - 1 свободное пр-во). Кол-во параметров - кол-во столбцов */
 	/*grid-template-columns: repeat(3, 1fr); /* Повторение фракций: 3 по 1fr; */
 	/*grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Повторение фракций с указанием минимального размера фракции 150px и перенос фракции на след строку*/
 	/*grid-column-gap: 10px; /* отступ между столбцами */
 	/*grid-template-rows: 150px 250px 50px; /* аналогично grid-template-columns */
 	grid-template-rows: 150px 150px 150px; 
 	/*grid-row-gap: 20px; /* отступ между строками */
-	grid-gap: 10px; /* Отступ между строками и столбцами одновременно, возможен так же второй параметр (когда отступы строк и столбцов отличаются) */
+	/*grid-gap: 10px; /* Отступ между строками и столбцами одновременно, возможен так же второй параметр (когда отступы строк и столбцов отличаются) */
 	/*grid-auto-columns: 1fr; /* Авто размер столбцов 1fr */
 	/*grid-auto-rows: 100px; /* Авто размер строк 100px */
 	grid-auto-flow: column; /* направление отрисовки сетки по вертикали. По умолчанию - row (по горизонтали) */
-
+	/*align-items: center; /* Выравнивание эл-та внутри ячейки по вертикали /start, end, center/ */
+	/*justify-items: center; /* Выравнивание эл-та внутри ячейки по горизонтали  /start, end, center/ */
+	/*place-items: start center; /* Выравнивание эл-та внутри ячейки по вертикали и горизонтали /start, end, center/ stretch - по умолчанию*/
+	
+	/*Возможные значения: start, end, center, space-around, space-between, space-evenly*/
+	/*align-content: space-around; /* Выравнивание сетки внутри контейнера по вертикали */
+	/*justify-content: start; /* Выравнивание сетки внутри контейнера по горизонтали */
+	/*place-content: start center; /* Выравнивание сетки внутри контейнера по вертикали и горизонтали */
 
 	border: 2px solid red;
+	height: 500px;
 }
 
 .grid-item {
@@ -30,6 +38,12 @@
 	/*grid-row-start: 1;
 	grid-row-end: 3;*/
 	/* grid-row: 1 / span 3 ;*/	
+
+	/* выравнивание содержимого эл-та вдоль осей ячейки /start, end, center/ stretch - по умолчанию */
+	/*justify-self: center;
+	align-self: start;
+	place-self: end;*/
+
 }
 
 div > div:nth-child(odd){ /* Стиль для нечетных дочерних div */
