@@ -1,0 +1,43 @@
+.item-a {grid-area: header;}
+.item-b {grid-area: main;}
+.item-c {grid-area: sidebar;}
+.item-d {grid-area: footer;}
+.container {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-rows: 150px 350px 40px;
+	grid-template-areas:
+	"header header header header"
+	"main main main sidebar"
+	"footer footer footer sidebar"; /* указываем сетку для header, main, sidebar, footer построчно */
+}
+
+@media screen and (max-width: 500px){ /* при ширине экрана < 500px выводит всю сетку в 1 столбец */
+	.container {
+		grid-template-rows: 150px 150px 300px 50px;
+		grid-template-areas:
+		"header header header header"
+		"sidebar sidebar sidebar sidebar"
+		"main main main main"
+		"footer footer footer footer";
+	}
+}
+
+/* оформление */
+div {
+	border: 2px solid red;
+	color: #ffffff;
+}
+
+.item-a {
+	background-color: #4a4848;
+}
+.item-b {
+	background-color: #8f8b8b;
+}
+.item-c {
+	background-color: #4a4848;
+}
+.item-d {
+	background-color: #8f8b8b;
+}

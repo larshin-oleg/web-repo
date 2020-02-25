@@ -1,0 +1,46 @@
+.grid-container {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr; /* столбцы задаются в: px, %, fr (1fr - 1 свободное пр-во). Кол-во параметров - кол-во столбцов */
+	/*grid-template-columns: repeat(3, 1fr); /* Повторение фракций: 3 по 1fr; */
+	/*grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Повторение фракций с указанием минимального размера фракции 150px и перенос фракции на след строку*/
+	/*grid-column-gap: 10px; /* отступ между столбцами */
+	/*grid-template-rows: 150px 250px 50px; /* аналогично grid-template-columns */
+	grid-template-rows: 150px 150px 150px; 
+	/*grid-row-gap: 20px; /* отступ между строками */
+	grid-gap: 10px; /* Отступ между строками и столбцами одновременно, возможен так же второй параметр (когда отступы строк и столбцов отличаются) */
+	/*grid-auto-columns: 1fr; /* Авто размер столбцов 1fr */
+	/*grid-auto-rows: 100px; /* Авто размер строк 100px */
+	grid-auto-flow: column; /* направление отрисовки сетки по вертикали. По умолчанию - row (по горизонтали) */
+
+
+	border: 2px solid red;
+}
+
+.grid-item {
+
+
+	border: 2px solid black;
+}
+
+.item1 {
+	/*grid-column-start: 1; /* начало ячейки */
+	/*grid-column-end: 4; /* конец ячейки */
+	/*grid-column: 1 / span 4; /* Сокращенная запись: начало / конец ячейки */
+	/* Аналогично со строками: */
+	/*grid-row-start: 1;
+	grid-row-end: 3;*/
+	/* grid-row: 1 / span 3 ;*/	
+}
+
+div > div:nth-child(odd){ /* Стиль для нечетных дочерних div */
+	background: #666;
+}
+
+div > div {
+	padding: 5px;
+}
+
+div {
+
+	font-size: 25px;
+}
