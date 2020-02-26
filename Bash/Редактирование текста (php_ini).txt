@@ -1,0 +1,38 @@
+#!/bin/bash
+
+#Редактируем php.ini под рекомендации к ЦРМ:
+sed -i "s/short_open_tag = Off/short_open_tag = On/" /etc/php.ini
+sed -i "s/max_execution_time = 30/max_execution_time = 300/" /etc/php.ini
+
+{
+	echo -e '\nzend_extension = /usr/local/ioncube/ioncube_loader_lin_5.6.so'
+	echo -e '\ndate.timezone = Europe/Moscow'
+}	>> /root/php.ini #/etc/php.ini
+
+#Пропишем виртуальный хост (пример на 900 порт):
+echo -e '\nNameVirtualHost *:900\nListen 900\n<VirtualHost *:900>\nDocumentRoot /var/www/html/salesman\n<Directory /var/www/html/salesman>\nRewriteEngine on\n</Directory>\n</VirtualHost>' >> /etc/httpd/conf/httpd.conf
+
+#Перезагрузка апача:
+systemctl restart httpd #Для CentOS 7
+
+#Для CentOS 6: service httpd restart
+
+#Установка дистрибутива ЦРМ:
+mkdir /var/www/html/salesman
+
+cd /var/www/html/salesman
+
+wget "https://salesman.pro/download/getfile.php?v=linux&p=php5.6"
+
+mv getfile.php\?v\=linux\&p\=php5.6 salesman.zip
+
+unzip salesman.zip
+
+mkdir vigets/cours/
+
+chmod 777 admin/backup cash/ inc/ cash/templates files images/logo vigets/cours/ opensource/dompdf/lib/fonts/ -R
+
+
+echo -e '------------------\n\nSalesMan CRM has been installed! Congratulations!\n\n------------------'
+
+rm -rf ~/installsm.sh

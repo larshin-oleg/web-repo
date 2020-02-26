@@ -1,0 +1,12 @@
+#!/bin/bash
+
+LOGIN=root
+PASS=mozc__WSZOL5
+
+SID=$( mysql -u $LOGIN -p$PASS -D information_schema -N -e "select ID FROM processlist WHERE TIME>30 and COMMAND='Sleep';" )
+
+for val in $SID; do
+        echo "$val deleted process!"
+        mysql -u root -pmozc__WSZOL5 -D information_schema -N -e "KILL $val;"
+done
+

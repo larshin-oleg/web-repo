@@ -1,0 +1,88 @@
+#!/bin/bash
+
+#Установим необходимые репозитории:
+rpm -Uvh http://mirror.webtatic.com/yum/el7/epel-release.rpm
+rpm -Uvh http://mirror.webtatic.com/yum/el7/webtatic-release.rpm
+
+#установка програм:
+yum install wget htop bzip2 nano zip unzip -y
+
+#установка Apache:
+yum install httpd -y
+systemctl enable httpd
+
+#установка пакетов php5.6:
+yum install -y php56w php56w-opcache php56w-xml php56w-mcrypt php56w-gd php56w-devel php56w-mysql php56w-intl php56w-mbstring php56w-imap
+
+#Установка MariaDB:
+yum install mariadb-server -y
+systemctl start mariadb
+systemctl enable mariadb
+
+
+#создаем БД SalesMan
+UserBD=salesman
+PswdBD=salesman!1
+NameBD=salesman
+RootPswdBD=mozc__WSZOL5
+
+
+#Установка рутового пароля MySQL:
+mysql -u root <<-EOF
+	UPDATE mysql.user SET Password=PASSWORD('$PswdBD') WHERE User='root';
+	DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1');
+	DELETE FROM mysql.user WHERE User='';
+	DELETE FROM mysql.db WHERE Db='test' OR Db='test_%';
+	FLUSH PRIVILEGES;
+EOF
+
+mysql -u root -p$RootPswdBD <<EOF
+        create database $NameBD;
+        create user '$UserBD' IDENTIFIED BY '$PswdBD';
+        GRANT ALL PRIVILEGES ON ${NameBD}.* TO $UserBD@localhost IDENTIFIED BY '$PswdBD';
+        flush privileges;
+EOF
+
+#Установка ioncube:
+wget http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz
+tar xzvf ioncube_loaders_lin_x86-64.tar.gz
+cd ioncube
+mkdir /usr/local/ioncube
+cp -p ioncube_loader_lin_5.6.so /usr/local/ioncube/
+
+#Редактируем php.ini под рекомендации к ЦРМ:
+sed -i "s/short_open_tag = Off/short_open_tag = On/" /etc/php.ini
+sed -i "s/max_execution_time = 30/max_execution_time = 300/" /etc/php.ini
+
+{
+	echo -e '\nzend_extension = /usr/local/ioncube/ioncube_loader_lin_5.6.so'
+	echo -e '\ndate.timezone = Europe/Moscow'
+}	>> /etc/php.ini
+
+#Пропишем виртуальный хост (пример на 900 порт):
+echo -e '\n<VirtualHost *:80>\nDocumentRoot /var/www/html/salesman\n<Directory /var/www/html/salesman>\nRewriteEngine on\n</Directory>\n</VirtualHost>' >> /etc/httpd/conf/httpd.conf
+
+#Перезагрузка апача:
+systemctl restart httpd #Для CentOS 7
+
+#Для CentOS 6: service httpd restart
+
+#Установка дистрибутива ЦРМ:
+mkdir /var/www/html/salesman
+
+cd /var/www/html/salesman
+
+wget "https://salesman.pro/download/getfile.php?v=linux&p=php5.6"
+
+mv getfile.php\?v\=linux\&p\=php5.6 salesman.zip
+
+unzip salesman.zip
+
+mkdir vigets/cours/
+
+chmod 777 admin/backup cash/ inc/ cash/templates files images/logo vigets/cours/ opensource/dompdf/lib/fonts/ -R
+
+
+echo -e '------------------\n\nSalesMan CRM has been installed! Congratulations!\n\n------------------'
+
+rm -rf ~/installsm.sh

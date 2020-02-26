@@ -1,0 +1,320 @@
+﻿
+ POST: 
+Array
+(
+    [did] => 1327
+    [autor] => 1
+    [summa] => 0.00
+    [status] => Победа полная
+    [identity] => 1
+    [event] => deal.close
+    [iduser1] => 1
+)
+
+ Сделка: 
+Array
+(
+    [did] => 1327
+    [dealUID] => 
+    [title] => СД1327: 123
+    [datum_plan] => 2019-06-24
+    [date_create] => 2019-03-26
+    [date_update] => 
+    [datum_start] => 
+    [datum_end] => 
+    [step] => Array
+        (
+            [stepid] => 13
+            [steptitle] => 25
+            [stepname] => Получен опросный лист
+        )
+
+    [stepName] => Получен опросный лист
+    [direction] => 1
+    [directionName] => Основное
+    [adres] => 
+    [summa] => 0.00
+    [marga] => 0.00
+    [kol_fact] => 0.00
+    [iduser] => 1
+    [userUID] => 
+    [user] => Стегленко Александр
+    [autor] => 1
+    [autorName] => Стегленко Александр
+    [autorUID] => 
+    [calculate] => no
+    [tip] => 7
+    [tipName] => Индастриал
+    [content] => 
+    [input1] => 
+    [input2] => 
+    [input3] => 
+    [input4] => 
+    [contract] => Array
+        (
+            [deid] => 
+            [datum] => 
+            [title] => 
+            [number] => 
+            [datum_start] => 
+            [datum_end] => 
+            [des] => 
+            [clid] => 
+            [did] => 
+            [idtype] => 
+            [crid] => 
+        )
+
+    [company] => Array
+        (
+            [id] => 3
+            [name_ur] => Общество с ограниченной ответственностью «ПростоВент»
+            [name_shot] => ООО «ПростоВент»
+            [address_yur] => 140070, МО, Люберецкий р-н, п. Томилино, ул. Гаршина, д.11, лит О1, оф. 1-1
+            [address_post] => 140070, МО, Люберецкий р-н, п. Томилино, ул. Гаршина, д.11, лит О1, оф. 1-1
+            [dir_name] => Генерального директора Ганненко Андрея Евгениевича
+            [dir_signature] => Ганненко А.Е.
+            [dir_status] => Генеральный директор
+            [dir_osnovanie] => Устава
+            [inn] => 7725812732
+            [kpp] => 772501001
+            [okpo] => 5137746190643
+            [ogrn] => 26266155
+        )
+
+    [close] => Array
+        (
+            [close] => yes
+            [date] => 2019-03-27
+            [summa] => 0.00
+            [status] => Победа полная
+            [statustext] => Обозначает выигрыш, Договор выполнен и получена прибыль
+        )
+
+    [client] => Array
+        (
+            [clid] => 3071
+            [title] => Тест
+            [des] => 
+            [idcategory] => 0
+            [category] => 
+            [phone] => 
+            [fax] => 
+            [site_url] => 
+            [mail_url] => 
+            [address] => 
+            [iduser] => 1
+            [pid] => 
+            [fav] => no
+            [trash] => no
+            [head_clid] => 
+            [head] => 
+            [scheme] => 
+            [tip_cmr] => Потенциальный клиент
+            [territory] => 0
+            [territoryname] => 
+            [creator] => Стегленко Александр
+            [editor] => не определено
+            [date_create] => 22.03.19,  17:12
+            [date_edit] => 
+            [recv] => Array
+                (
+                    [clid] => 3071
+                    [castUrName] => 
+                    [castName] => Тест
+                    [castInn] => 
+                    [castKpp] => 
+                    [castBank] => 
+                    [castBankKs] => 
+                    [castBankRs] => 
+                    [castBankBik] => 
+                    [castOkpo] => 
+                    [castOgrn] => 
+                    [castDirName] => 
+                    [castDirSignature] => 
+                    [castDirStatus] => 
+                    [castDirStatusSig] => 
+                    [castDirOsnovanie] => 
+                    [castUrAddr] => 
+                    [castUrNameShort] => 
+                    [castFacAddr] => 
+                    [castType] => client
+                )
+
+            [dostup] => Array
+                (
+                    [0] => 10
+                    [1] => 10
+                    [2] => 8
+                    [3] => 13
+                    [4] => 13
+                    [5] => 13
+                )
+
+            [clientpath] => Входящий контакт
+            [type] => client
+            [clientpath2] => 6
+            [uid] => 
+            [relation] => Потенциальный клиент
+            [priceLevel] => price_1
+            [clientUID] => 
+            [input3] => 
+            [input1] => 
+            [input2] => 
+        )
+
+    [payer] => Array
+        (
+            [clid] => 3071
+            [title] => Тест
+            [des] => 
+            [idcategory] => 0
+            [category] => 
+            [phone] => 
+            [fax] => 
+            [site_url] => 
+            [mail_url] => 
+            [address] => 
+            [iduser] => 1
+            [pid] => 
+            [fav] => no
+            [trash] => no
+            [head_clid] => 
+            [head] => 
+            [scheme] => 
+            [tip_cmr] => Потенциальный клиент
+            [territory] => 0
+            [territoryname] => 
+            [creator] => Стегленко Александр
+            [editor] => не определено
+            [date_create] => 22.03.19,  17:12
+            [date_edit] => 
+            [recv] => Array
+                (
+                    [clid] => 3071
+                    [castUrName] => 
+                    [castName] => Тест
+                    [castInn] => 
+                    [castKpp] => 
+                    [castBank] => 
+                    [castBankKs] => 
+                    [castBankRs] => 
+                    [castBankBik] => 
+                    [castOkpo] => 
+                    [castOgrn] => 
+                    [castDirName] => 
+                    [castDirSignature] => 
+                    [castDirStatus] => 
+                    [castDirStatusSig] => 
+                    [castDirOsnovanie] => 
+                    [castUrAddr] => 
+                    [castUrNameShort] => 
+                    [castFacAddr] => 
+                    [castType] => client
+                )
+
+            [dostup] => Array
+                (
+                    [0] => 10
+                    [1] => 10
+                    [2] => 8
+                    [3] => 13
+                    [4] => 13
+                    [5] => 13
+                )
+
+            [clientpath] => Входящий контакт
+            [type] => client
+            [clientpath2] => 6
+            [uid] => 
+            [relation] => Потенциальный клиент
+            [priceLevel] => price_1
+            [clientUID] => 
+            [input3] => 
+            [input1] => 
+            [input2] => 
+        )
+
+)
+
+
+
+ Клиент: 
+Array
+(
+    [result] => Ok
+    [client] => Array
+        (
+            [clid] => 3071
+            [title] => Тест
+            [des] => 
+            [idcategory] => 0
+            [category] => 
+            [phone] => 
+            [fax] => 
+            [site_url] => 
+            [mail_url] => 
+            [address] => 
+            [iduser] => 1
+            [pid] => 
+            [fav] => no
+            [trash] => no
+            [head_clid] => 
+            [head] => 
+            [scheme] => 
+            [tip_cmr] => Потенциальный клиент
+            [territory] => 0
+            [territoryname] => 
+            [creator] => Стегленко Александр
+            [editor] => не определено
+            [date_create] => 22.03.19,  17:12
+            [date_edit] => 
+            [recv] => Array
+                (
+                    [clid] => 3071
+                    [castUrName] => 
+                    [castName] => Тест
+                    [castInn] => 
+                    [castKpp] => 
+                    [castBank] => 
+                    [castBankKs] => 
+                    [castBankRs] => 
+                    [castBankBik] => 
+                    [castOkpo] => 
+                    [castOgrn] => 
+                    [castDirName] => 
+                    [castDirSignature] => 
+                    [castDirStatus] => 
+                    [castDirStatusSig] => 
+                    [castDirOsnovanie] => 
+                    [castUrAddr] => 
+                    [castUrNameShort] => 
+                    [castFacAddr] => 
+                    [castType] => client
+                )
+
+            [dostup] => Array
+                (
+                    [0] => 10
+                    [1] => 10
+                    [2] => 8
+                    [3] => 13
+                    [4] => 13
+                    [5] => 13
+                )
+
+            [clientpath] => Входящий контакт
+            [type] => client
+            [clientpath2] => 6
+            [uid] => 
+            [relation] => Потенциальный клиент
+            [priceLevel] => price_1
+            [clientUID] => 
+            [input3] => 
+            [input1] => 
+            [input2] => 
+        )
+
+)
+
+

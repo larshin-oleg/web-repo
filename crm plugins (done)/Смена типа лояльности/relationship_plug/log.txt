@@ -1,0 +1,576 @@
+\n Инфо клиента:
+Array
+(
+    [data] => Array
+        (
+            [clid] => 526
+            [uid] => 
+            [type] => client
+            [date_create] => 16.09.18,  17:53
+            [date_edit] => 23.11.18,  14:33
+            [input2] => Нет
+            [input3] => Да
+            [title] => Тест
+            [iduser] => admin
+            [idcategory] => Академические организации
+            [head_clid] => --не определено--
+            [address] => йцвууфывсфыс
+            [phone] => й1231
+            [site_url] => фвыа\чим
+            [mail_url] => 123йцфвяыа
+            [territory] => Екатеринбург
+            [des] => 
+            [scheme] => 
+            [tip_cmr] => Перспективный клиент
+            [input4] => Да
+            [clientpath] => Заказ с сайта
+        )
+
+)
+\n Количество закрытых сделок:
+1\n Перечень закрытых сделок:
+Array
+(
+    [data] => Array
+        (
+            [0] => Array
+                (
+                    [did] => 553
+                    [uid] => 
+                    [datum] => 2018-11-22
+                    [datum_izm] => 
+                    [clid] => 526
+                    [clientTitle] => Тест
+                    [title] => СД552: DealTest
+                    [mcid] => 2
+                    [iduser] => 1
+                    [user] => admin
+                    [userTitle] => admin
+                    [datum_plan] => 2018-12-06
+                    [step] => 10
+                    [stepID] => 1
+                    [stepTitle] => Заявка
+                    [contractID] => 
+                    [contractTitle] => 
+                    [contractNumber] => 
+                    [contractDate] => 
+                    [tipID] => 8
+                    [tip] => Asterconf
+                    [directionID] => 1
+                    [direction] => Основное
+                    [content] => 
+                    [payer] => 526
+                    [payerTitle] => Тест
+                    [kol] => 0.00
+                    [marga] => 0.00
+                    [datum_start] => 0000-00-00
+                    [datum_end] => 0000-00-00
+                    [close] => yes
+                    [datum_close] => 2018-11-22
+                    [status_close] => Победа полная
+                    [des_fact] => 
+                    [kol_fact] => 0.00
+                )
+
+        )
+
+    [count] => 1
+)
+\n Количество открытых сделок:
+1\n Перечень отрытых сделок:
+Array
+(
+    [data] => Array
+        (
+            [0] => Array
+                (
+                    [did] => 565
+                    [uid] => 
+                    [datum] => 2018-11-23
+                    [datum_izm] => 
+                    [clid] => 526
+                    [clientTitle] => Тест
+                    [title] => СД564: Тест 1
+                    [mcid] => 3
+                    [iduser] => 1
+                    [user] => admin
+                    [userTitle] => admin
+                    [datum_plan] => 2018-12-07
+                    [step] => 10
+                    [stepID] => 1
+                    [stepTitle] => Заявка
+                    [contractID] => 
+                    [contractTitle] => 
+                    [contractNumber] => 
+                    [contractDate] => 
+                    [tipID] => 8
+                    [tip] => Asterconf
+                    [directionID] => 1
+                    [direction] => Основное
+                    [content] => 
+                    [payer] => 526
+                    [payerTitle] => Тест
+                    [kol] => 0.00
+                    [marga] => 0.00
+                    [datum_start] => 0000-00-00
+                    [datum_end] => 0000-00-00
+                    [close] => no
+                    [datum_close] => 
+                    [status_close] => 
+                    [des_fact] => 
+                    [kol_fact] => 0.00
+                )
+
+        )
+
+    [count] => 1
+)
+\n Счетчик сделок:
+2\n массив на update:
+Array
+(
+    [login] => admin
+    [apikey] => x5af26JFNRGJT1Hkh7NodsLhtnUDKP
+    [action] => update
+    [clid] => 526
+    [user] => admin
+    [tip_cmr] => Старый клиент
+)
+\n Инфо клиента:
+Array
+(
+    [data] => Array
+        (
+            [clid] => 531
+            [uid] => 
+            [type] => client
+            [date_create] => 26.11.18,  10:54
+            [date_edit] => 
+            [input2] => Нет
+            [input3] => Да
+            [title] => Новый клиент Тест
+            [iduser] => admin
+            [idcategory] => Информационные технологии
+            [head_clid] => --не определено--
+            [address] => Адрес
+            [phone] => 1111111
+            [site_url] => 
+            [mail_url] => 22222
+            [territory] => Волгоград
+            [des] => 
+            [scheme] => 
+            [tip_cmr] => Потенциальный клиент
+            [input4] => Да
+            [clientpath] => Из 1С
+        )
+
+)
+\n Количество закрытых сделок:
+0\n Перечень закрытых сделок:
+Array
+(
+    [count] => 0
+)
+\n Количество открытых сделок:
+1\n Перечень отрытых сделок:
+Array
+(
+    [data] => Array
+        (
+            [0] => Array
+                (
+                    [did] => 566
+                    [uid] => 
+                    [datum] => 2018-11-26
+                    [datum_izm] => 
+                    [clid] => 531
+                    [clientTitle] => Новый клиент Тест
+                    [title] => СД565: СД558: Тест
+                    [mcid] => 2
+                    [iduser] => 1
+                    [user] => admin
+                    [userTitle] => admin
+                    [datum_plan] => 2018-12-10
+                    [step] => 10
+                    [stepID] => 1
+                    [stepTitle] => Заявка
+                    [contractID] => 
+                    [contractTitle] => 
+                    [contractNumber] => 
+                    [contractDate] => 
+                    [tipID] => 8
+                    [tip] => Asterconf
+                    [directionID] => 1
+                    [direction] => Основное
+                    [content] => 
+                    [payer] => 531
+                    [payerTitle] => Новый клиент Тест
+                    [kol] => 0.00
+                    [marga] => 0.00
+                    [datum_start] => 0000-00-00
+                    [datum_end] => 0000-00-00
+                    [close] => no
+                    [datum_close] => 
+                    [status_close] => 
+                    [des_fact] => 
+                    [kol_fact] => 0.00
+                )
+
+        )
+
+    [count] => 1
+)
+\n Счетчик сделок:
+1\n Инфо клиента:
+Array
+(
+    [data] => Array
+        (
+            [clid] => 531
+            [uid] => 
+            [type] => client
+            [date_create] => 26.11.18,  10:54
+            [date_edit] => 
+            [input2] => Нет
+            [input3] => Да
+            [title] => Новый клиент Тест
+            [iduser] => admin
+            [idcategory] => Информационные технологии
+            [head_clid] => --не определено--
+            [address] => Адрес
+            [phone] => 1111111
+            [site_url] => 
+            [mail_url] => 22222
+            [territory] => Волгоград
+            [des] => 
+            [scheme] => 
+            [tip_cmr] => Потенциальный клиент
+            [input4] => Да
+            [clientpath] => Из 1С
+        )
+
+)
+\n Количество закрытых сделок:
+0\n Перечень закрытых сделок:
+Array
+(
+    [count] => 0
+)
+\n Количество открытых сделок:
+2\n Перечень отрытых сделок:
+Array
+(
+    [data] => Array
+        (
+            [0] => Array
+                (
+                    [did] => 567
+                    [uid] => 
+                    [datum] => 2018-11-26
+                    [datum_izm] => 
+                    [clid] => 531
+                    [clientTitle] => Новый клиент Тест
+                    [title] => СД566: Тест2
+                    [mcid] => 2
+                    [iduser] => 1
+                    [user] => admin
+                    [userTitle] => admin
+                    [datum_plan] => 2018-12-10
+                    [step] => 10
+                    [stepID] => 1
+                    [stepTitle] => Заявка
+                    [contractID] => 
+                    [contractTitle] => 
+                    [contractNumber] => 
+                    [contractDate] => 
+                    [tipID] => 8
+                    [tip] => Asterconf
+                    [directionID] => 1
+                    [direction] => Основное
+                    [content] => 
+                    [payer] => 531
+                    [payerTitle] => Новый клиент Тест
+                    [kol] => 0.00
+                    [marga] => 0.00
+                    [datum_start] => 0000-00-00
+                    [datum_end] => 0000-00-00
+                    [close] => no
+                    [datum_close] => 
+                    [status_close] => 
+                    [des_fact] => 
+                    [kol_fact] => 0.00
+                )
+
+            [1] => Array
+                (
+                    [did] => 566
+                    [uid] => 
+                    [datum] => 2018-11-26
+                    [datum_izm] => 
+                    [clid] => 531
+                    [clientTitle] => Новый клиент Тест
+                    [title] => СД565: СД558: Тест
+                    [mcid] => 2
+                    [iduser] => 1
+                    [user] => admin
+                    [userTitle] => admin
+                    [datum_plan] => 2018-12-10
+                    [step] => 10
+                    [stepID] => 1
+                    [stepTitle] => Заявка
+                    [contractID] => 
+                    [contractTitle] => 
+                    [contractNumber] => 
+                    [contractDate] => 
+                    [tipID] => 8
+                    [tip] => Asterconf
+                    [directionID] => 1
+                    [direction] => Основное
+                    [content] => 
+                    [payer] => 531
+                    [payerTitle] => Новый клиент Тест
+                    [kol] => 0.00
+                    [marga] => 0.00
+                    [datum_start] => 0000-00-00
+                    [datum_end] => 0000-00-00
+                    [close] => no
+                    [datum_close] => 
+                    [status_close] => 
+                    [des_fact] => 
+                    [kol_fact] => 0.00
+                )
+
+        )
+
+    [count] => 2
+)
+\n Счетчик сделок:
+2\n массив на update:
+Array
+(
+    [login] => admin
+    [apikey] => x5af26JFNRGJT1Hkh7NodsLhtnUDKP
+    [action] => update
+    [clid] => 531
+    [user] => admin
+    [tip_cmr] => Старый клиент
+)
+\n Инфо клиента:
+Array
+(
+    [data] => Array
+        (
+            [clid] => 532
+            [uid] => 
+            [type] => client
+            [date_create] => 26.11.18,  10:59
+            [date_edit] => 
+            [input2] => 
+            [input3] => 
+            [title] => Тест 2
+            [iduser] => admin
+            [idcategory] => Информационные технологии
+            [head_clid] => --не определено--
+            [address] => 
+            [phone] => 1111111111
+            [site_url] => 
+            [mail_url] => 
+            [territory] => 
+            [des] => 
+            [scheme] => 
+            [tip_cmr] => Потенциальный клиент
+            [input4] => 
+            [clientpath] => Входящий контакт
+        )
+
+)
+\n Количество закрытых сделок:
+0\n Перечень закрытых сделок:
+Array
+(
+    [count] => 0
+)
+\n Количество открытых сделок:
+1\n Перечень отрытых сделок:
+Array
+(
+    [data] => Array
+        (
+            [0] => Array
+                (
+                    [did] => 568
+                    [uid] => 
+                    [datum] => 2018-11-26
+                    [datum_izm] => 
+                    [clid] => 532
+                    [clientTitle] => Тест 2
+                    [title] => СД567: Тест2
+                    [mcid] => 2
+                    [iduser] => 1
+                    [user] => admin
+                    [userTitle] => admin
+                    [datum_plan] => 2018-12-10
+                    [step] => 10
+                    [stepID] => 1
+                    [stepTitle] => Заявка
+                    [contractID] => 
+                    [contractTitle] => 
+                    [contractNumber] => 
+                    [contractDate] => 
+                    [tipID] => 8
+                    [tip] => Asterconf
+                    [directionID] => 1
+                    [direction] => Основное
+                    [content] => 
+                    [payer] => 532
+                    [payerTitle] => Тест 2
+                    [kol] => 0.00
+                    [marga] => 0.00
+                    [datum_start] => 0000-00-00
+                    [datum_end] => 0000-00-00
+                    [close] => no
+                    [datum_close] => 
+                    [status_close] => 
+                    [des_fact] => 
+                    [kol_fact] => 0.00
+                )
+
+        )
+
+    [count] => 1
+)
+\n Счетчик сделок:
+1\n Инфо клиента:
+Array
+(
+    [data] => Array
+        (
+            [clid] => 532
+            [uid] => 
+            [type] => client
+            [date_create] => 26.11.18,  10:59
+            [date_edit] => 
+            [input2] => 
+            [input3] => 
+            [title] => Тест 2
+            [iduser] => admin
+            [idcategory] => Информационные технологии
+            [head_clid] => --не определено--
+            [address] => 
+            [phone] => 1111111111
+            [site_url] => 
+            [mail_url] => 
+            [territory] => 
+            [des] => 
+            [scheme] => 
+            [tip_cmr] => Потенциальный клиент
+            [input4] => 
+            [clientpath] => Входящий контакт
+        )
+
+)
+\n Количество закрытых сделок:
+0\n Перечень закрытых сделок:
+Array
+(
+    [count] => 0
+)
+\n Количество открытых сделок:
+2\n Перечень отрытых сделок:
+Array
+(
+    [data] => Array
+        (
+            [0] => Array
+                (
+                    [did] => 568
+                    [uid] => 
+                    [datum] => 2018-11-26
+                    [datum_izm] => 
+                    [clid] => 532
+                    [clientTitle] => Тест 2
+                    [title] => СД567: Тест2
+                    [mcid] => 2
+                    [iduser] => 1
+                    [user] => admin
+                    [userTitle] => admin
+                    [datum_plan] => 2018-12-10
+                    [step] => 10
+                    [stepID] => 1
+                    [stepTitle] => Заявка
+                    [contractID] => 
+                    [contractTitle] => 
+                    [contractNumber] => 
+                    [contractDate] => 
+                    [tipID] => 8
+                    [tip] => Asterconf
+                    [directionID] => 1
+                    [direction] => Основное
+                    [content] => 
+                    [payer] => 532
+                    [payerTitle] => Тест 2
+                    [kol] => 0.00
+                    [marga] => 0.00
+                    [datum_start] => 0000-00-00
+                    [datum_end] => 0000-00-00
+                    [close] => no
+                    [datum_close] => 
+                    [status_close] => 
+                    [des_fact] => 
+                    [kol_fact] => 0.00
+                )
+
+            [1] => Array
+                (
+                    [did] => 569
+                    [uid] => 
+                    [datum] => 2018-11-26
+                    [datum_izm] => 
+                    [clid] => 532
+                    [clientTitle] => Тест 2
+                    [title] => СД568: Сделка 2
+                    [mcid] => 2
+                    [iduser] => 1
+                    [user] => admin
+                    [userTitle] => admin
+                    [datum_plan] => 2018-12-10
+                    [step] => 10
+                    [stepID] => 1
+                    [stepTitle] => Заявка
+                    [contractID] => 
+                    [contractTitle] => 
+                    [contractNumber] => 
+                    [contractDate] => 
+                    [tipID] => 8
+                    [tip] => Asterconf
+                    [directionID] => 1
+                    [direction] => Основное
+                    [content] => 
+                    [payer] => 532
+                    [payerTitle] => Тест 2
+                    [kol] => 0.00
+                    [marga] => 0.00
+                    [datum_start] => 0000-00-00
+                    [datum_end] => 0000-00-00
+                    [close] => no
+                    [datum_close] => 
+                    [status_close] => 
+                    [des_fact] => 
+                    [kol_fact] => 0.00
+                )
+
+        )
+
+    [count] => 2
+)
+\n Счетчик сделок:
+2\n массив на update:
+Array
+(
+    [login] => admin
+    [apikey] => x5af26JFNRGJT1Hkh7NodsLhtnUDKP
+    [action] => update
+    [clid] => 532
+    [user] => admin
+    [tip_cmr] => Старый клиент
+)

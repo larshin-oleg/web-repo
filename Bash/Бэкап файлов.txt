@@ -1,0 +1,6 @@
+#!/bin/bash
+#Пакуем файлы в архив:
+tar -zcvf /var/www/html/salesman/backup/stand_backup.tar.gz /var/www/html/salesman/cash/ /var/www/html/salesman/inc/ /var/www/html/salesman/files/
+#Делаем дамп Базы данных:
+mysqldump -u salesman -psalesman!1 -h localhost -d yoolla > /var/www/html/backup/stand_backup.sql
+

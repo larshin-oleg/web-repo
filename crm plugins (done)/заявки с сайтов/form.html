@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html lang="ru" class="lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html lang="ru" class="lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html lang="ru" class="lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!-->
+<html>
+<!--<![endif]-->
+<head>
+	<meta charset="utf-8" />
+	<title>Москлимат оставить заявку</title>
+	<meta name="description" content="" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="shortcut icon" href="favicon.png" />
+	<script src="libs/sourcebuster/sourcebuster.min.js"></script>
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="libs/font-awesome-4.2.0/css/font-awesome.min.css" />
+	<link rel="stylesheet" href="libs/fancybox/jquery.fancybox.css" />
+	<link rel="stylesheet" href="libs/owl-carousel/owl.carousel.css" />
+	<link rel="stylesheet" href="css/fonts.css" />
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+	<link rel="stylesheet" href="css/main.css" />
+	<link rel="stylesheet" href="css/custom.css" />
+	
+
+</head>
+<body>
+	<header class="clearfix">
+		<div class="container">
+			<div class="phone"><i class="fa fa-phone-square" aria-hidden="true"></i> <span>+7 (499) 579 91 21</span></div>
+			<div id="promo-code"class="promo">Ваш ID: <span>123</span></div>
+			<div class="email"><a href="mailto:zakaz@mskclimat.ru"><i class="fa fa-envelope" aria-hidden="true"></i> zakaz@mskclimat.ru</a></div>
+		</div>
+	</header>
+	<section class="main">
+		<div class="container">
+			<div class="main-topline clearfix">
+				<div class="logo"><a href="index.html"><span>М</span><img src="img/logo-icon.png" alt=""><span>С</span>климат</a></div>
+				<!--<div class="main-links">
+					<ul>
+						<li><a href="#">линк 1</a></li>
+						<li><a href="#">линк 2</a></li>
+						<li><a href="#">линк 3</a></li>
+					</ul>
+				</div>-->
+			</div>
+			<div class="main-text__block">
+				<h1>ОБСЛУЖИВАНИЕ<br>И РЕМОНТ КОНДИЦИОНЕРОВ<br><span class="white">ОТ </span><span class="price">3400 РУБ.</span></h1>
+			</div>
+		</div>
+	</section>
+	<section class="services">
+		<div class="container">
+			<div class="services-wrapp">
+				<div class="services-element">
+					<div class="services-element__icon icon_0"></div>
+					<h3>Диагностика</h3>
+					<p>Полная диагностика систем вентиляции и кондиционирования является неотъемлемым этапом обслуживания техники.</p>
+				</div>
+				<div class="services-element">
+					<div class="services-element__icon icon_1"></div>
+					<h3>Настройка</h3>
+					<p>Любая техника в том числе и климатическая переодически нуждается в насройке или отладке системы.</p>
+				</div>
+				<div class="services-element">
+					<div class="services-element__icon icon_2"></div>
+					<h3>Ремонт</h3>
+					<p>Полная диагностика систем вентиляции и кондиционирования является неотъемлемым этапом обслуживания техники.</p>
+				</div>
+				<div class="services-element">
+					<div class="services-element__icon icon_3"></div>
+					<h3>Настройка</h3>
+					<p>Любая техника в том числе и климатическая переодически нуждается в насройке или отладке системы. </p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!--<section class="advantages">-->
+	<section class="pre-footer clearfix">
+		<div class="container">
+			<!--<div class="advantages-wrapp">-->
+			
+
+			
+			<H2>Отправьте заявку на техническое обслуживание</H2>
+			<form class="maintance-form" action="client_v2.php" method="post" id="maintance-form">
+				<div class="maintance-div1">
+				<input type="text" id="pers_name" size="30px" name="pers_name" placeholder="Ваше имя" required/><br>
+				
+				<input type="tel" onkeyup="this.value=this.value.replace(/[^\d]+/g,'')" title="Формат: 89998885566" size="30px" id="client_phone" name="client_phone" placeholder="Ваш телефон" required/><br>
+			
+				<input type="email" id="client_email"  title="Формат: example@email.ru" size="30px" name="client_email" placeholder="Ваш email" required/><br>
+				
+				<input type="text" name="urname" size="30px" placeholder="Название компании" required/><br>
+
+                <input type="number" onkeyup="this.value=this.value.replace(/[^\d]+/g,'')" name="inn" class="input-num" placeholder="ИНН"/><br>
+
+                <input type="number" onkeyup="this.value=this.value.replace(/[^\d]+/g,'')" name="kpp" class="input-num" placeholder="КПП"/><br>
+				</div>
+				
+				<div class="maintance-div2">
+
+                <input type="number" onkeyup="this.value=this.value.replace(/[^\d]+/g,'')" name="bik" class="input-num" placeholder="БИК"/><br>
+
+                <input type="text" name="bank_name" size="30px" placeholder="Название Банка"/><br>
+
+                <input type="number" onkeyup="this.value=this.value.replace(/[^\d]+/g,'')" name="account" class="input-num" placeholder="Расчетный счет"/><br>
+
+                <input type="number" onkeyup="this.value=this.value.replace(/[^\d]+/g,'')" name="ogrn" class="input-num" placeholder="ОГРН"/><br>
+
+                <input type="text" name="Legal_address" size="30px" placeholder="Юридический адрес"/><br>
+
+                <input type="text" name="The_position_of_the_head" size="30px" placeholder="Должность руководителя"/><br>
+
+                <input type="text" name="name_head" size="30px" placeholder="ФИО руководителя"/><br>
+				</div><br>
+				<div class="maintance-button">
+				<input type="reset"\>&nbsp&nbsp&nbsp&nbsp&nbsp <input type="submit" value='Отправить заявку'/>
+				</div>
+				
+			</form>
+			
+			
+		</div>
+	</section>
+	<section class="steps">
+		<div class="container">
+			<h2>Как мы работаем</h2>
+			<div class="step-wrapp">
+				<div class="step-element">
+					<div class="step-element__icon"><img src="img/steps-icon_0.png" alt=""></div>
+					<h3>Вы оставляете заявку на сайте на консультацию по подбору кондиционера</h3>
+					<div class="step-element__number">1</div>
+				</div>
+				<div class="step-element">
+					<div class="step-element__icon"><img src="img/steps-icon_1.png" alt=""></div>
+					<h3>Приезжает инженер и делает необходимые замеры</h3>
+					<div class="step-element__number">2</div>
+				</div>
+				<div class="step-element">
+					<div class="step-element__icon"><img src="img/steps-icon_2.png" alt=""></div>
+					<h3>На следующий день приезжают монтажники</h3>
+					<div class="step-element__number">3</div>
+				</div>
+				<div class="step-element">
+					<div class="step-element__icon"><img src="img/steps-icon_3.png" alt=""></div>
+					<h3>В течении  3 часов устанавливаем кондиционер</h3>
+					<div class="step-element__number">4</div>
+				</div>
+				<div class="step-element">
+					<div class="step-element__icon"><img src="img/steps-icon_4.png" alt="" /></div>
+					<h3>Ваш кондиционер готов к использованию!</h3>
+					<div class="step-element__number">5</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="gallery">
+		<div class="container">
+			<h2>Фотогалерея / Последние проекты</h2>
+			<div class="gallery-wrapp">
+				<div class="gallery_element">
+					<a id="single_image" href="./img/gallery-photo_0.png">
+						<img src="./img/gallery-photo_0.png" alt="">
+					</a>
+				</div>
+				<div class="gallery_element">
+					<a id="single_image" href="./img/gallery-photo_1.png">
+						<img src="./img/gallery-photo_1.png" alt="">
+					</a>
+				</div>
+				<div class="gallery_element">
+					<a id="single_image" href="./img/gallery-photo_2.png">
+						<img src="./img/gallery-photo_2.png" alt="">
+					</a>
+				</div>
+				<div class="gallery_element">
+					<a id="single_image" href="./img/gallery-photo_3.png">
+						<img src="./img/gallery-photo_3.png" alt="">
+					</a>
+				</div>
+				<div class="gallery_element">
+					<a id="single_image" href="./img/gallery-photo_4.png">
+						<img src="./img/gallery-photo_4.png" alt="">
+					</a>
+				</div>
+				<div class="gallery_element">
+					<a id="single_image" href="./img/gallery-photo_5.png">
+						<img src="./img/gallery-photo_5.png" alt="">
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="pre-footer clearfix">
+		<div class="container">
+			<h2>ПЕРЕЙДЕМ К ДЕЛУ</h2>
+			<div class="questions-wrapp">
+				<h3>Часто задаваемые вопросы</h3>
+				<div class="view-source">
+					<a class="slide-source" href="#">Почему не включается кондиционер?</a>
+					<div class="hide">Причин может быть несколько. Нет питания (прозвонить провода
+						в случае разрыва, проверить автомат, или проверить
+						на правильность подключения провода к питанию кондиционера)...
+						<br><a class="read-more"href="#">читать далее</a>
+					</div>
+				</div>
+				<div class="view-source">
+					<a class="slide-source" href="#">Как часто нужно заправлять кондиционер?</a>
+					<div class="hide">Спрятанный текст</div>
+				</div>
+				<div class="view-source">
+					<a class="slide-source" href="#">Как часто нужно чистить кондиционер?</a>
+					<div class="hide">Спрятанный текст</div>
+				</div>
+				<div class="view-source">
+					<a class="slide-source" href="#">Почему из внутреннего блока капает вода?</a>
+					<div class="hide">Спрятанный текст</div>
+				</div>
+			</div>
+			<div class="contact-us-wrapp">
+				<h3>Задать вопрос специалисту онлайн:</h3>
+				<form class="clearfix" action="">
+					<input type="text" placeholder="Имя">
+					<input type="text" placeholder="E-mail">
+					<input type="text" placeholder="Тел.">
+					<textarea name="name" rows="8" cols="40" placeholder="Вопрос"></textarea>
+					<button class="contact-us_btn">Отправить вопрос</button>
+				</form>
+			</div>
+		</div>
+	</section>
+	<footer class="clearfix">
+		<div class="container clearfix">
+			<div class="contact-info">
+				<div class="main-info">
+					<div class="logo"><a href="#"><span>М</span><img src="img/logo-icon.png" alt=""><span>С</span>климат</a></div>
+					<div class="phone"><i class="fa fa-phone-square" aria-hidden="true"></i> +7 (499) 322 13 59</div>
+					<div class="email"><a href="mailto:zakaz@mskclimat.ru"><i class="fa fa-envelope" aria-hidden="true"></i> zakaz@mskclimat.ru</a></div>
+				</div>
+				<div class="other-info">
+					<div class="address">
+						<h3>Адрес</h3>
+						<p>г. Москва, <br>л. Лавочкина 23, 2 этаж</p>
+					</div>
+					<div class="mode">
+						<h3>Режим Работы</h3>
+						<p>с 9:00 до 19:00<br>Суббота, Воскресенье выходной</p>
+					</div>
+				</div>
+			</div>
+			<div class="copyright">Copyright &#169; 2014 - 2016</div>
+		</div>
+	</footer>
+	<!--[if lt IE 9]>
+	<script src="libs/html5shiv/es5-shim.min.js"></script>
+	<script src="libs/html5shiv/html5shiv.min.js"></script>
+	<script src="libs/html5shiv/html5shiv-printshiv.min.js"></script>
+	<script src="libs/respond/respond.min.js"></script>
+	<![endif]-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script src="libs/fancybox/jquery.fancybox.pack.js"></script>
+	<script src="libs/owl-carousel/owl.carousel.min.js"></script>
+	<script src="js/common.js"></script>
+	<!-- Yandex.Metrika counter --><!-- /Yandex.Metrika counter -->
+	<!-- Google Analytics counter --><!-- /Google Analytics counter -->
+</body>
+</html>
